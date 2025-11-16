@@ -2,14 +2,6 @@
 
 Angular Full Stack ([MEAN Stack](#MEAN-Stack)) application for users to browse and purchase products, manage their shopping cart, and handle orders efficiently. This application features user authentication, product listings, and an admin dashboard for managing inventory.
 
-## Live Web Project
-
-Visit the Store as Customer [Store Demo](https://e-commerce-86f86.web.app). <br>
-Visit the Store Dashboard as Admin [Dashboard Demo](https://dashboard-5b2fd.web.app/dashboard). _(please be patient, it may take a minute to load)_ <br>
-Back-End API Docs [API Swagger](http://localhost:5000/api-docs/) _(still working on it)_
-
-![E-store](https://github.com/user-attachments/assets/e3aa2840-fef9-4706-be3d-b9fe5a39a2fa)
-
 ## Table of Contents
 
 - [Features](#features)
