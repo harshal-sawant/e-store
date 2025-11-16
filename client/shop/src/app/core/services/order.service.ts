@@ -6,9 +6,6 @@ export class OrderService {
   constructor(private http: HttpClient) {}
 
   createOrder(body: any) {
-    return this.http.post<any>(
-      'https://e-commerce-api-wvh5.onrender.com/api/v1/orders',
-      body
-    );
+    return this.http.post<any>('http://localhost:5000/api/v1/orders', body);
   }
 }

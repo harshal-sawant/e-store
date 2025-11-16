@@ -1,50 +1,98 @@
 <div class="container">
   <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
     <div class="btns-holder">
-      <h1 (click)="onLoginSwitch()" [ngStyle]="{'color': isLoginMode ? '#22c55e' : 'black'}">Log in</h1>
-      <h1 (click)="onSignupSwitch()" [ngStyle]="{'color': !isLoginMode ? '#22c55e' : 'black'}">Sign up</h1>
-      <span class="after"
-        [ngStyle]="{'left': isLoginMode ? '40px' : '120px', 'width': isLoginMode ? '20%' : '22%'}"></span>
+      <h1
+        (click)="onLoginSwitch()"
+        [ngStyle]="{ color: isLoginMode ? '#22c55e' : 'black' }"
+      >
+        Log in
+      </h1>
+      <h1
+        (click)="onSignupSwitch()"
+        [ngStyle]="{ color: !isLoginMode ? '#22c55e' : 'black' }"
+      >
+        Sign up
+      </h1>
+      <span
+        class="after"
+        [ngStyle]="{
+          left: isLoginMode ? '40px' : '120px',
+          width: isLoginMode ? '20%' : '22%'
+        }"
+      ></span>
     </div>
     <!-- <div class="form-group"> -->
     <span class="" *ngIf="!isLoginMode">
-
       <div class="lable_group">
         <mat-icon class="icon">person</mat-icon>
         <label for="name">Name</label>
       </div>
-      <input class="form-control" id="name" name="name" type="name" name required ngModel pInputText
-        placeholder="Name" />
+      <input
+        class="form-control"
+        id="name"
+        name="name"
+        type="name"
+        name
+        required
+        ngModel
+        pInputText
+        placeholder="Name"
+      />
     </span>
     <span class="">
-
       <div class="lable_group">
         <mat-icon class="icon">email</mat-icon>
         <label for="email">Email</label>
       </div>
-      <input class="form-control" id="email" name="email" type="email" email required ngModel pInputText
-        placeholder="Email" />
+      <input
+        class="form-control"
+        id="email"
+        name="email"
+        type="email"
+        email
+        required
+        ngModel
+        pInputText
+        placeholder="Email"
+      />
     </span>
     <span class="">
       <div class="lable_group">
         <mat-icon class="icon">lock</mat-icon>
         <label for="password">Password</label>
       </div>
-      <input class="form-control" id="password" name="password" type="password" required ngModel pInputText
-        placeholder="Password" />
+      <input
+        class="form-control"
+        id="password"
+        name="password"
+        type="password"
+        required
+        ngModel
+        pInputText
+        placeholder="Password"
+      />
     </span>
-    <p-button class="btn" styleClass=" p-button-success" label="Log In" type="submit"></p-button>
+    <p-button
+      class="btn"
+      styleClass=" p-button-success"
+      label="Log In"
+      type="submit"
+    ></p-button>
     <!-- </div> -->
     <!-- <button class="btn" type="submit">Log In</button> -->
   </form>
 </div>
 <div class="user-email">
   <button (click)="toggleDefaultEmail()">
-    <span *ngIf="isShowEmail" class="material-symbols-outlined">arrow_drop_up</span>
-    <span *ngIf="!isShowEmail" class="material-symbols-outlined">arrow_drop_down</span>
+    <span *ngIf="isShowEmail" class="material-symbols-outlined"
+      >arrow_drop_up</span
+    >
+    <span *ngIf="!isShowEmail" class="material-symbols-outlined"
+      >arrow_drop_down</span
+    >
   </button>
   <div *ngIf="isShowEmail">
-    <p>Email: test@mail.com</p>
-    <p>Password: 123123</p>
+    <p>Email: test@test.com</p>
+    <p>Password: test@123</p>
   </div>
 </div>

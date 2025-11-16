@@ -103,7 +103,7 @@ export class RequestsService extends BaseComponent {
     numericFilter?: string,
     limit?: number
   ) {
-    let apiUrl: string = `https://e-commerce-api-wvh5.onrender.com/api/v1/products`;
+    let apiUrl: string = `http://localhost:5000/api/v1/products`;
     // ?numericFilter=150,670
     let sign = '?';
     if (search) {
@@ -141,9 +141,7 @@ export class RequestsService extends BaseComponent {
   }
 
   getProduct(productId: number) {
-    return this.http.get(
-      `https://e-commerce-api-wvh5.onrender.com/api/v1/products/${productId}`
-    );
+    return this.http.get(`http://localhost:5000/api/v1/products/${productId}`);
   }
   updateProducts(products: Product[]) {
     return this.http.put<any>(
@@ -154,23 +152,20 @@ export class RequestsService extends BaseComponent {
   getAllCategories() {
     return this.http
       .get<{ success: boolean; data: Product[] }>(
-        `https://e-commerce-api-wvh5.onrender.com/api/v1/categories`
+        `http://localhost:5000/api/v1/categories`
       )
       .pipe(map((res) => res.data));
   }
 
   addNewCategory(category: string) {
-    return this.http.post<any>(
-      `https://e-commerce-api-wvh5.onrender.com/api/v1/categories`,
-      {
-        category: category,
-      }
-    );
+    return this.http.post<any>(`http://localhost:5000/api/v1/categories`, {
+      category: category,
+    });
   }
 
   getCategory(category: string, sortOption?: string, numericFilter?: string) {
     // ?numericFilter=150,670
-    let apiUrl: string = `https://e-commerce-api-wvh5.onrender.com/api/v1/products?category=${category}`;
+    let apiUrl: string = `http://localhost:5000/api/v1/products?category=${category}`;
     if (sortOption) {
       apiUrl = apiUrl + `&sort=${sortOption}`;
       console.log(apiUrl);
@@ -186,7 +181,7 @@ export class RequestsService extends BaseComponent {
 
   createOrder(body: any) {
     this.http
-      .post<any>('https://e-commerce-api-wvh5.onrender.com/api/v1/orders', body)
+      .post<any>('http://localhost:5000/api/v1/orders', body)
       .pipe(takeUntil(this.destroy$))
       .subscribe(
         (res) => {
@@ -263,19 +258,19 @@ export class RequestsService extends BaseComponent {
   }
   getComments(productID: any) {
     return this.http.get<any>(
-      `https://e-commerce-api-wvh5.onrender.com/api/v1/comments/${productID}`
+      `http://localhost:5000/api/v1/comments/${productID}`
     );
   }
   getOneComment(productID: any, uid: any) {
     return this.http.get<any>(
-      `https://e-commerce-api-wvh5.onrender.com/api/v1/comments/${productID}/${uid}`
+      `http://localhost:5000/api/v1/comments/${productID}/${uid}`
     );
   }
   saveComment(productID: string, body: any): Observable<any> {
     console.log(productID, body);
     localStorage.setItem('commentExists', 'true');
     return this.http.post<any>(
-      `https://e-commerce-api-wvh5.onrender.com/api/v1/comments/${productID}`,
+      `http://localhost:5000/api/v1/comments/${productID}`,
       body
     );
   }
@@ -284,7 +279,7 @@ export class RequestsService extends BaseComponent {
     console.log(body);
 
     return this.http.put<any>(
-      `https://e-commerce-api-wvh5.onrender.com/api/v1/comments/${productID}/${uid}`,
+      `http://localhost:5000/api/v1/comments/${productID}/${uid}`,
       body
     );
   }

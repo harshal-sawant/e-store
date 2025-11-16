@@ -4,10 +4,10 @@ import { BehaviorSubject, Observable, Subject, map, tap } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { getAuth, signOut } from 'firebase/auth';
 import { Router } from '@angular/router';
-import { initializeApp } from "firebase/app";
+import { initializeApp } from 'firebase/app';
 // import { jwtDecode } from "jwt-decode";
 
-export interface AuthResponseData  {
+export interface AuthResponseData {
   kind?: string;
   idToken: string;
   email: string;
@@ -19,21 +19,21 @@ export interface AuthResponseData  {
 }
 // Initialize Firebase
 const firebaseConfig = {
-  apiKey: "AIzaSyCql3Npno578hxnzN5mjD4SHjyLcdkWe4U",
-  authDomain: "e-commerce-86f86.firebaseapp.com",
-  databaseURL: "https://e-commerce-86f86-default-rtdb.firebaseio.com",
-  projectId: "e-commerce-86f86",
-  storageBucket: "e-commerce-86f86.appspot.com",
-  messagingSenderId: "919866914313",
-  appId: "1:919866914313:web:e1ca6e0d2d57436551ead8",
-  measurementId: "G-B84QYC3H4G"
+  apiKey: 'AIzaSyCql3Npno578hxnzN5mjD4SHjyLcdkWe4U',
+  authDomain: 'e-commerce-86f86.firebaseapp.com',
+  databaseURL: 'https://e-commerce-86f86-default-rtdb.firebaseio.com',
+  projectId: 'e-commerce-86f86',
+  storageBucket: 'e-commerce-86f86.appspot.com',
+  messagingSenderId: '919866914313',
+  appId: '1:919866914313:web:e1ca6e0d2d57436551ead8',
+  measurementId: 'G-B84QYC3H4G',
 };
 const app = initializeApp(firebaseConfig);
 // Initialize Firebase Authentication and get a reference to the service
 const auth = getAuth(app);
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   [x: string]: any;
@@ -43,14 +43,15 @@ export class AuthService {
 
   constructor(private router: Router, private http: HttpClient) {}
   expirationTime: any;
-  private tokenExpirationTimer:any ;
+  private tokenExpirationTimer: any;
   setLogoutTimer(expirationDuration: number) {
-    this.tokenExpirationTimer = setTimeout(() =>
-    {
-    }, expirationDuration)
+    this.tokenExpirationTimer = setTimeout(() => {}, expirationDuration);
   }
   signIn(email: string, password: string) {
     // APi SignIN
-    return this.http.post<any>("https://e-commerce-api-wvh5.onrender.com/api/v1/auth/login", {email, password})
+    return this.http.post<any>('http://localhost:5000/api/v1/auth/login', {
+      email,
+      password,
+    });
   }
 }

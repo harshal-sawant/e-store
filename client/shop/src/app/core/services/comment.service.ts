@@ -8,27 +8,27 @@ export class CommentService {
 
   getComments(productID: any) {
     return this.http.get<any>(
-      `https://e-commerce-api-wvh5.onrender.com/api/v1/comments/${productID}`
+      `http://localhost:5000/api/v1/comments/${productID}`
     );
   }
 
   getOneComment(productID: any, uid: any) {
     return this.http.get<any>(
-      `https://e-commerce-api-wvh5.onrender.com/api/v1/comments/${productID}/${uid}`
+      `http://localhost:5000/api/v1/comments/${productID}/${uid}`
     );
   }
 
   saveComment(productID: string, body: any): Observable<any> {
     localStorage.setItem('commentExists', 'true');
     return this.http.post<any>(
-      `https://e-commerce-api-wvh5.onrender.com/api/v1/comments/${productID}`,
+      `http://localhost:5000/api/v1/comments/${productID}`,
       body
     );
   }
 
   updateComment(productID: any, uid: any, body: any) {
     return this.http.put<any>(
-      `https://e-commerce-api-wvh5.onrender.com/api/v1/comments/${productID}/${uid}`,
+      `http://localhost:5000/api/v1/comments/${productID}/${uid}`,
       body
     );
   }

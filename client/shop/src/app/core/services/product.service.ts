@@ -14,7 +14,7 @@ export class ProductService {
     numericFilter?: string,
     limit?: number
   ) {
-    let apiUrl: string = `https://e-commerce-api-wvh5.onrender.com/api/v1/products`;
+    let apiUrl: string = `http://localhost:5000/api/v1/products`;
     // ?numericFilter=150,670
     let sign = '?';
     if (search) {
@@ -52,29 +52,26 @@ export class ProductService {
   }
 
   getProduct(productId: number) {
-    return this.http.get(
-      `https://e-commerce-api-wvh5.onrender.com/api/v1/products/${productId}`
-    );
+    return this.http.get(`http://localhost:5000/api/v1/products/${productId}`);
   }
 
   getAllCategories() {
     return this.http
       .get<{ success: boolean; data: Product[] }>(
-        `https://e-commerce-api-wvh5.onrender.com/api/v1/categories`
+        `http://localhost:5000/api/v1/categories`
       )
       .pipe(map((res) => res.data));
   }
 
   addNewCategory(category: string) {
-    return this.http.post<any>(
-      `https://e-commerce-api-wvh5.onrender.com/api/v1/categories`,
-      { category: category }
-    );
+    return this.http.post<any>(`http://localhost:5000/api/v1/categories`, {
+      category: category,
+    });
   }
 
   getCategory(category: string, sortOption?: string, numericFilter?: string) {
     // ?numericFilter=150,670
-    let apiUrl: string = `https://e-commerce-api-wvh5.onrender.com/api/v1/products?category=${category}`;
+    let apiUrl: string = `http://localhost:5000/api/v1/products?category=${category}`;
     if (sortOption) {
       apiUrl = apiUrl + `&sort=${sortOption}`;
       console.log(apiUrl);
