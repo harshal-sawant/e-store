@@ -106,10 +106,20 @@ export class CreateProductComponent extends BaseComponent implements OnInit {
     };
 
     if (this.createMode) {
-      this.productsService.createProduct(this.resultProduct);
+      this.productsService
+        .createProduct(this.resultProduct)
+        .subscribe((res) => {
+          console.log('Product created successfully:', res);
+          form.resetForm();
+        });
       // You can add further logic to send the form data to your backend or perform other operations.
     } else {
-      this.productsService.updateProduct(this.id, form.value);
+      this.productsService
+        .updateProduct(this.id, form.value)
+        .subscribe((res) => {
+          console.log('Product updated successfully:', res);
+          form.resetForm();
+        });
     }
     this.submitted = true;
   }

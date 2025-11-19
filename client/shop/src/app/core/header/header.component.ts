@@ -72,14 +72,14 @@ export class HeaderComponent extends BaseComponent implements OnInit {
     this.productService
       .getAllCategories()
       .pipe(takeUntil(this.destroy$))
-      .subscribe(
-        (categories: any) => {
-          this.categories = categories;
+      .subscribe({
+        next: (categories: any) => {
+          this.categories = categories.categories || [];
         },
-        (error: any) => {
+        error: (error: any) => {
           console.error('Error loading categories:', error);
-        }
-      );
+        },
+      });
   }
 
   private setupCartAndWishlistCounters(): void {

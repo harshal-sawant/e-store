@@ -20,6 +20,7 @@ import { CategoryEffect } from './features/create-product/category store/categor
 import { StoreModule } from '@ngrx/store';
 import { categoriesReducer } from './features/create-product/category store/category.store';
 import { TruncatePipe } from './features/products/truncate.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +30,7 @@ import { TruncatePipe } from './features/products/truncate.pipe';
     CreateProductComponent,
     OrdersComponent,
     AuthComponent,
-    TruncatePipe
+    TruncatePipe,
   ],
   imports: [
     AppRoutingModule,
@@ -47,6 +48,6 @@ import { TruncatePipe } from './features/products/truncate.pipe';
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [HttpInterceptproviders],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

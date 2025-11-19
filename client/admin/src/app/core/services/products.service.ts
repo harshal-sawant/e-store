@@ -83,16 +83,7 @@ export class ProductsService {
     // fd.append('category', body.category);
     // fd.append('stockQuantity', '12');
 
-    this.http
-      .post<any>(`http://localhost:5000/api/v1/products`, body)
-      .subscribe(
-        (res) => {
-          console.log(res);
-        },
-        (err) => {
-          console.log(err);
-        }
-      );
+    return this.http.post<any>(`http://localhost:5000/api/v1/products`, body);
   }
   updateProduct(id: string, body: any) {
     console.log(body);
@@ -109,11 +100,7 @@ export class ProductsService {
     // fd.append('category', body.category);
     // fd.append('stockQuantity', '12');
 
-    this.http
-      .patch(`http://localhost:5000/api/v1/products/${id}`, body)
-      .subscribe((res) => {
-        console.log(res);
-      });
+    return this.http.patch(`http://localhost:5000/api/v1/products/${id}`, body);
   }
   deleteProduct(id: string) {
     this.http

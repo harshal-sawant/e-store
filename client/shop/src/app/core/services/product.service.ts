@@ -60,7 +60,7 @@ export class ProductService {
       .get<{ success: boolean; data: Product[] }>(
         `http://localhost:5000/api/v1/categories`
       )
-      .pipe(map((res) => res.data));
+      .pipe(map((res) => res));
   }
 
   addNewCategory(category: string) {
