@@ -14,7 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatBadgeModule} from '@angular/material/badge';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { CheckoutComponent } from './feature/checkout/checkout.component';
 import { EffectsModule } from '@ngrx/effects';
 import { ProductsEffect } from './store/effects';
@@ -47,58 +47,39 @@ import { CoreModule } from './core/core.module';
 import { RouterModule } from '@angular/router';
 
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    // HeaderComponent,
-    // HomeComponent,
-    // WishlistComponent,
-    // ProductCardComponent,
-    // CheckoutComponent,
-    // ProductDetailsComponent,
-    // CartPageComponent,
-    // AuthComponent,
-    CommentComponent,
-    // ProductsComponent
-  ],
-  // imports: [
-  //   BrowserModule,
-  //   HttpClientModule,
-  //   AppRoutingModule,  // Main routing module
-  //   BrowserAnimationsModule,
-
-  //   // Feature Modules
-  //   StoreModule.forRoot(appReducers),
-  //   EffectsModule.forRoot([ProductsEffect, wishlistEffect, AuthEffect, CommentsEffect]),
-  //   StoreDevtoolsModule.instrument({ maxAge: 25 }),
-  // ],
-  imports: [
-    BrowserModule,
-    CoreModule,        // For core components like Header, Auth, etc.
-    HttpClientModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    SharedModule,
-    LoadingModule,
-    RouterModule, // Add RouterModule here
-
-    // StoreModule.forRoot(appReducers),
-    StoreModule.forRoot({
-      wishlist: appReducers.wishlist,
-      cart: appReducers.cart,
-      auth: appReducers.auth,
-      comments: appReducers.comments
-    }),
-    // Instrumentation must be imported after importing StoreModule (config is optional)
-    StoreDevtoolsModule.instrument({
-      maxAge: 25, // Retains last 25 states
-      // logOnly: environment.production, // Restrict extension to log-only mode
-    }),
-    EffectsModule.forRoot([ProductsEffect, wishlistEffect, AuthEffect, CommentsEffect]),
-  ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [HttpInterceptproviders],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        // HeaderComponent,
+        // HomeComponent,
+        // WishlistComponent,
+        // ProductCardComponent,
+        // CheckoutComponent,
+        // ProductDetailsComponent,
+        // CartPageComponent,
+        // AuthComponent,
+        CommentComponent,
+        // ProductsComponent
+    ],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        CoreModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        SharedModule,
+        LoadingModule,
+        RouterModule, // Add RouterModule here
+        // StoreModule.forRoot(appReducers),
+        StoreModule.forRoot({
+            wishlist: appReducers.wishlist,
+            cart: appReducers.cart,
+            auth: appReducers.auth,
+            comments: appReducers.comments
+        }),
+        // Instrumentation must be imported after importing StoreModule (config is optional)
+        StoreDevtoolsModule.instrument({
+            maxAge: 25, // Retains last 25 states
+            // logOnly: environment.production, // Restrict extension to log-only mode
+        }),
+        EffectsModule.forRoot([ProductsEffect, wishlistEffect, AuthEffect, CommentsEffect])], providers: [HttpInterceptproviders, provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }

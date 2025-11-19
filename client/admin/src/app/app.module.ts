@@ -10,7 +10,7 @@ import { OrdersComponent } from './features/orders/orders.component';
 import { DashboardComponent } from './features/dashboard/dashboard.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthComponent } from './core/auth/auth.component';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 import { LoadingModule } from './shared/loading/loading.module';
 import { HttpInterceptproviders } from './core/interceptors';
@@ -21,33 +21,26 @@ import { StoreModule } from '@ngrx/store';
 import { categoriesReducer } from './features/create-product/category store/category.store';
 import { TruncatePipe } from './features/products/truncate.pipe';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    DashboardComponent,
-    ProductsComponent,
-    CreateProductComponent,
-    OrdersComponent,
-    AuthComponent,
-    TruncatePipe,
-  ],
-  imports: [
-    AppRoutingModule,
-    HttpClientModule,
-    BrowserModule,
-    FormsModule,
-    LoadingModule,
-    StoreModule.forRoot({ category: categoriesReducer }),
-    // Instrumentation must be imported after importing StoreModule (config is optional)
-    StoreDevtoolsModule.instrument({
-      maxAge: 25, // Retains last 25 states
-      // logOnly: environment.production, // Restrict extension to log-only mode
-    }),
-    EffectsModule.forRoot([CategoryEffect]),
-  ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [HttpInterceptproviders],
-  bootstrap: [AppComponent],
-})
+@NgModule({ declarations: [
+        AppComponent,
+        HeaderComponent,
+        DashboardComponent,
+        ProductsComponent,
+        CreateProductComponent,
+        OrdersComponent,
+        AuthComponent,
+        TruncatePipe,
+    ],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    bootstrap: [AppComponent], imports: [AppRoutingModule,
+        BrowserModule,
+        FormsModule,
+        LoadingModule,
+        StoreModule.forRoot({ category: categoriesReducer }),
+        // Instrumentation must be imported after importing StoreModule (config is optional)
+        StoreDevtoolsModule.instrument({
+            maxAge: 25, // Retains last 25 states
+            // logOnly: environment.production, // Restrict extension to log-only mode
+        }),
+        EffectsModule.forRoot([CategoryEffect])], providers: [HttpInterceptproviders, provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule {}
