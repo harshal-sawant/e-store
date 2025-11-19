@@ -11,11 +11,12 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/admin",
+            "outputPath": {
+              "base": "dist/admin"
+            },
             "index": "client/admin/src/index.html",
-            "main": "client/admin/src/main.ts",
             "polyfills": ["zone.js"],
             "tsConfig": "client/admin/tsconfig.app.json",
             "assets": [
@@ -23,7 +24,8 @@
               "client/admin/src/assets"
             ],
             "styles": ["client/admin/src/styles.css"],
-            "scripts": []
+            "scripts": [],
+            "browser": "client/admin/src/main.ts"
           },
           "configurations": {
             "production": {
@@ -43,14 +45,10 @@
               "sourceMap": false,
               "optimization": true,
               "aot": true,
-              "namedChunks": false,
-              "vendorChunk": false,
-              "buildOptimizer": true
+              "namedChunks": false
             },
             "development": {
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
@@ -99,11 +97,12 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/shop",
+            "outputPath": {
+              "base": "dist/shop"
+            },
             "index": "client/shop/src/index.html",
-            "main": "client/shop/src/main.ts",
             "polyfills": ["zone.js"],
             "tsConfig": "client/shop/tsconfig.app.json",
             "assets": ["client/shop/src/favicon.ico", "client/shop/src/assets"],
@@ -112,7 +111,8 @@
               "node_modules\\bootstrap\\dist\\css\\bootstrap.min.css",
               "client/shop/src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "browser": "client/shop/src/main.ts"
           },
           "configurations": {
             "production": {
@@ -132,14 +132,10 @@
               "sourceMap": false,
               "optimization": true,
               "aot": true,
-              "namedChunks": false,
-              "vendorChunk": false,
-              "buildOptimizer": true
+              "namedChunks": false
             },
             "development": {
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true

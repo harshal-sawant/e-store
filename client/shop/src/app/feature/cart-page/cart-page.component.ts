@@ -8,9 +8,10 @@ import { selectCartProducts } from '../../store/selectors';
 import { BaseComponent } from 'global/base/base.component';
 
 @Component({
-  selector: 'app-cart-page',
-  templateUrl: './cart-page.component.html',
-  styleUrls: ['./cart-page.component.css'],
+    selector: 'app-cart-page',
+    templateUrl: './cart-page.component.html',
+    styleUrls: ['./cart-page.component.css'],
+    standalone: false
 })
 export class CartPageComponent
   extends BaseComponent

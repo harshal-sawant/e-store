@@ -11,9 +11,10 @@ interface SortByOption {
   code: string;
 }
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css'],
+    selector: 'app-products',
+    templateUrl: './products.component.html',
+    styleUrls: ['./products.component.css'],
+    standalone: false
 })
 export class ProductsComponent extends BaseComponent {
   products!: Product[];

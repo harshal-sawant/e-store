@@ -9,9 +9,10 @@ import { BaseComponent } from 'global/base/base.component';
 import { takeUntil } from 'rxjs';
 
 @Component({
-  selector: 'app-product-card',
-  templateUrl: './product-card.component.html',
-  styleUrls: ['./product-card.component.css'],
+    selector: 'app-product-card',
+    templateUrl: './product-card.component.html',
+    styleUrls: ['./product-card.component.css'],
+    standalone: false
 })
 export class ProductCardComponent extends BaseComponent implements OnInit {
   wishlist = 'WISHLIST';

@@ -5,9 +5,10 @@ import { Subscription } from 'rxjs';
 import { selectWishlistProducts } from '../store/selectors';
 
 @Component({
-  selector: 'app-wishlist',
-  templateUrl: './wishlist.component.html',
-  styleUrls: ['./wishlist.component.css'],
+    selector: 'app-wishlist',
+    templateUrl: './wishlist.component.html',
+    styleUrls: ['./wishlist.component.css'],
+    standalone: false
 })
 export class WishlistComponent implements OnInit, OnDestroy {
   products!: Product[];

@@ -16,9 +16,10 @@ import { WishlistService } from '../services/wishlist.service';
 import { BaseComponent } from 'global/base/base.component';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css'],
+    selector: 'app-header',
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.css'],
+    standalone: false
 })
 export class HeaderComponent extends BaseComponent implements OnInit {
   @ViewChild('contentWrapper') contentWrapper!: ElementRef;
