@@ -4,6 +4,7 @@ import { BaseComponent } from 'global/base/base.component';
 import { takeUntil } from 'rxjs';
 
 @Component({
+  standalone: false,
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],

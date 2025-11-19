@@ -8,6 +8,7 @@ import { selectCartProducts } from '../../store/selectors';
 import { BaseComponent } from 'global/base/base.component';
 
 @Component({
+  standalone: false,
   selector: 'app-cart-page',
   templateUrl: './cart-page.component.html',
   styleUrls: ['./cart-page.component.css'],

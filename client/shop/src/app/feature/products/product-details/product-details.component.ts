@@ -17,6 +17,7 @@ import * as CommentsActions from '../../../shared/components/comment/store/comme
 import { BaseComponent } from 'global/base/base.component';
 
 @Component({
+  standalone: false,
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.css'],

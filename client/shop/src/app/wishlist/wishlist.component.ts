@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { selectWishlistProducts } from '../store/selectors';
 
 @Component({
+  standalone: false,
   selector: 'app-wishlist',
   templateUrl: './wishlist.component.html',
   styleUrls: ['./wishlist.component.css'],

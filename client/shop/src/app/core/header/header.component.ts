@@ -16,6 +16,7 @@ import { WishlistService } from '../services/wishlist.service';
 import { BaseComponent } from 'global/base/base.component';
 
 @Component({
+  standalone: false,
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],

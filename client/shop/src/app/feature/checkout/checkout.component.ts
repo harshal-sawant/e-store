@@ -33,6 +33,7 @@ interface Order {
   products: OrderProduct[];
 }
 @Component({
+  standalone: false,
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.css'],

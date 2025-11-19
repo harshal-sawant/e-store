@@ -4,6 +4,7 @@ import { BaseComponent } from 'shared/global/base/base.component';
 import { takeUntil } from 'rxjs';
 
 @Component({
+  standalone: false,
   selector: 'app-orders',
   templateUrl: './orders.component.html',
   styleUrls: ['./orders.component.css'],

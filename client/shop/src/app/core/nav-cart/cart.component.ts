@@ -10,6 +10,7 @@ import { CartService } from '../services/cart.service';
 import { BaseComponent } from 'global/base/base.component';
 
 @Component({
+  standalone: false,
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css'],

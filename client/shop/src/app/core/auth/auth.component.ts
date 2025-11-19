@@ -4,6 +4,7 @@ import { FormGroup, NgForm } from '@angular/forms';
 import { Store } from '@ngrx/store';
 
 @Component({
+  standalone: false,
   selector: 'app-auth',
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.css'],

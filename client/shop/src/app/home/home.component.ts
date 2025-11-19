@@ -23,6 +23,7 @@ interface SortByOption {
   code: string;
 }
 @Component({
+  standalone: false,
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],

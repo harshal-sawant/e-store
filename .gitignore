@@ -15,7 +15,6 @@ tmp/
 /server/node_modules
 npm-debug.log
 yarn-error.log
-package-lock.json
 
 # IDEs and editors
 .idea/
@@ -42,6 +41,8 @@ package-lock.json
 /libpeerconnection.log
 testem.log
 /typings
+.angular/*
+
 
 # Firebase related files
 .firebase/

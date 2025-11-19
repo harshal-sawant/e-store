@@ -11,6 +11,7 @@ interface SortByOption {
   code: string;
 }
 @Component({
+  standalone: false,
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css'],

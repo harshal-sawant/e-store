@@ -6,6 +6,7 @@ import { BaseComponent } from 'global/base/base.component';
 import { takeUntil } from 'rxjs';
 
 @Component({
+  standalone: false,
   selector: 'app-auth',
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.css'],
