@@ -16,17 +16,13 @@
             "outputPath": "dist/admin",
             "index": "client/admin/src/index.html",
             "main": "client/admin/src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "client/admin/tsconfig.app.json",
             "assets": [
               "client/admin/src/favicon.ico",
               "client/admin/src/assets"
             ],
-            "styles": [
-              "client/admin/src/styles.css"
-            ],
+            "styles": ["client/admin/src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -66,10 +62,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "admin:build:production"
+              "buildTarget": "admin:build:production"
             },
             "development": {
-              "browserTarget": "admin:build:development"
+              "buildTarget": "admin:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -77,24 +73,19 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "admin:build"
+            "buildTarget": "admin:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "client/admin/tsconfig.spec.json",
             "assets": [
               "client/admin/src/favicon.ico",
               "client/admin/src/assets"
             ],
-            "styles": [
-              "client/admin/src/styles.css"
-            ],
+            "styles": ["client/admin/src/styles.css"],
             "scripts": []
           }
         }
@@ -113,17 +104,10 @@
             "outputPath": "dist/shop",
             "index": "client/shop/src/index.html",
             "main": "client/shop/src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "client/shop/tsconfig.app.json",
-            "assets": [
-              "client/shop/src/favicon.ico",
-              "client/shop/src/assets"
-            ],
+            "assets": ["client/shop/src/favicon.ico", "client/shop/src/assets"],
             "styles": [
-              "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
-              "node_modules/primeng/resources/primeng.min.css",
               "@angular/material/prebuilt-themes/indigo-pink.css",
               "node_modules\\bootstrap\\dist\\css\\bootstrap.min.css",
               "client/shop/src/styles.css"
@@ -167,10 +151,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "shop:build:production"
+              "buildTarget": "shop:build:production"
             },
             "development": {
-              "browserTarget": "shop:build:development"
+              "buildTarget": "shop:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -178,24 +162,16 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "shop:build"
+            "buildTarget": "shop:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "client/shop/tsconfig.spec.json",
-            "assets": [
-              "client/shop/src/favicon.ico",
-              "client/shop/src/assets"
-            ],
-            "styles": [
-              "client/shop/src/styles.css"
-            ],
+            "assets": ["client/shop/src/favicon.ico", "client/shop/src/assets"],
+            "styles": ["client/shop/src/styles.css"],
             "scripts": []
           }
         }
