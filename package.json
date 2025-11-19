@@ -36,11 +36,11 @@
     "jwt-decode": "^4.0.0",
     "ng": "^0.0.0",
     "ngx-swiper-wrapper": "^10.0.0",
-    "primeng": "^15.4.1",
+    "primeng": "^17.3.12",
     "rxjs": "~7.8.0",
     "swiper": "^11.0.3",
     "tslib": "^2.3.0",
-    "zone.js": "~0.14.0"
+    "zone.js": "~0.14.10"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^16.2.16",
