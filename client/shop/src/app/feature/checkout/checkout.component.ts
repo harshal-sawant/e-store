@@ -4,6 +4,7 @@ import {
   OnDestroy,
   OnInit,
   Renderer2,
+  AfterViewInit,
 } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Product } from '../../shared/product.model';
@@ -13,6 +14,12 @@ import { selectCartProducts } from '../../store/selectors';
 import { select } from '@ngrx/store';
 import { NgForm } from '@angular/forms';
 import { OrderService } from '../../core/services/order.service';
+import {
+  loadStripe,
+  Stripe,
+  StripeElements,
+  StripeCardElement,
+} from '@stripe/stripe-js';
 interface UserInfo {
   name: string;
   email: string;
@@ -33,12 +40,19 @@ interface Order {
   products: OrderProduct[];
 }
 @Component({
-    selector: 'app-checkout',
-    templateUrl: './checkout.component.html',
-    styleUrls: ['./checkout.component.css'],
-    standalone: false
+  selector: 'app-checkout',
+  templateUrl: './checkout.component.html',
+  styleUrls: ['./checkout.component.css'],
+  standalone: false,
 })
-export class CheckoutComponent implements OnInit, OnDestroy {
+export class CheckoutComponent implements OnInit, OnDestroy, AfterViewInit {
+  stripe: Stripe | null = null;
+  cardElement: StripeCardElement | null = null;
+  elements: StripeElements | null = null;
+  paymentProcessing = false;
+  paymentError: string | null = null;
+  paymentSuccess = false;
+  useStripe = true;
   minDate: string;
   maxDate: string;
   expirationDate: string = 'MM/YY';
@@ -97,6 +111,37 @@ export class CheckoutComponent implements OnInit, OnDestroy {
       console.log(this.order);
     }
   }
+
+  async ngAfterViewInit() {
+    // Initialize Stripe with your publishable key
+    // Replace with your actual Stripe publishable key
+    this.stripe = await loadStripe('pk_test_YOUR_STRIPE_PUBLISHABLE_KEY');
+
+    if (this.stripe && this.useStripe) {
+      this.elements = this.stripe.elements();
+      this.cardElement = this.elements.create('card', {
+        style: {
+          base: {
+            fontSize: '16px',
+            color: '#32325d',
+            fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+            '::placeholder': {
+              color: '#aab7c4',
+            },
+          },
+          invalid: {
+            color: '#fa755a',
+            iconColor: '#fa755a',
+          },
+        },
+      });
+
+      const cardElementContainer = document.getElementById('card-element');
+      if (cardElementContainer) {
+        this.cardElement.mount('#card-element');
+      }
+    }
+  }
   getTotalPrice(products: Product[]) {
     this.totalPrice = 0;
     for (let i = 0; i < products.length; i++) {
@@ -133,7 +178,11 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     // Update the model and input field
     this.cardNumber = value;
   }
-  onSubmit(form: NgForm) {
+  async onSubmit(form: NgForm) {
+    if (!form.valid) {
+      return;
+    }
+
     let NewOrder: Order = {
       userInfo: {
         name: form.value.name,
@@ -143,6 +192,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
       },
       products: [],
     };
+
     for (let product of this.products) {
       NewOrder.products.push({
         name: product.title,
@@ -150,8 +200,65 @@ export class CheckoutComponent implements OnInit, OnDestroy {
         price: product.price,
       });
     }
-    console.log(NewOrder);
-    this._OrderService.createOrder(NewOrder);
+
+    if (this.useStripe && this.stripe && this.cardElement) {
+      await this.processStripePayment(NewOrder, form.value.name);
+    } else {
+      // Traditional card processing (mock)
+      console.log(NewOrder);
+      this._OrderService.createOrder(NewOrder);
+      this.paymentSuccess = true;
+    }
+  }
+
+  async processStripePayment(order: Order, cardholderName: string) {
+    this.paymentProcessing = true;
+    this.paymentError = null;
+
+    if (!this.stripe || !this.cardElement) {
+      this.paymentError = 'Stripe not initialized';
+      this.paymentProcessing = false;
+      return;
+    }
+
+    try {
+      // Create payment method
+      const { error, paymentMethod } = await this.stripe.createPaymentMethod({
+        type: 'card',
+        card: this.cardElement,
+        billing_details: {
+          name: cardholderName,
+          email: order.userInfo.email,
+        },
+      });
+
+      if (error) {
+        this.paymentError = error.message || 'Payment failed';
+        this.paymentProcessing = false;
+        return;
+      }
+
+      // In a real application, send paymentMethod.id to your backend
+      // to create a payment intent and confirm the payment
+      console.log('Payment Method Created:', paymentMethod);
+      console.log('Order:', order);
+
+      // Mock successful payment
+      setTimeout(() => {
+        this._OrderService.createOrder(order);
+        this.paymentSuccess = true;
+        this.paymentProcessing = false;
+      }, 1500);
+    } catch (err: any) {
+      this.paymentError = err.message || 'An error occurred during payment';
+      this.paymentProcessing = false;
+    }
+  }
+
+  togglePaymentMethod() {
+    this.useStripe = !this.useStripe;
+    this.paymentError = null;
+    this.paymentSuccess = false;
   }
   onCardNumberFocus() {
     const element = this.el.nativeElement.querySelector('.card-item__focus');

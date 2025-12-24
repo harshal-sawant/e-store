@@ -10,6 +10,7 @@
   background-color: white;
   color: black;
   font-weight: 600;
+  flex-direction: row;
   /* border: #b1b1b1 solid;
   border-width: 1px 0 1px 0; */
   z-index: 1000; /* Ensure it stays above other content */
@@ -42,7 +43,7 @@
 #search {
   padding: 10px;
   border-radius: 8px;
-  width: 350px;
+  /* width: 350px; */
   border: 1px solid #b1b1b1;
 }
 #search:focus {
@@ -78,7 +79,6 @@ svg {
   font-size: 15px;
 }
 
-
 .select {
   display: flex;
   flex-direction: column;
@@ -86,7 +86,6 @@ svg {
   height: 100%;
   width: 300px;
   background-color: #ff8100;
-
 }
 .select .nav-btn {
   display: flex;
@@ -123,7 +122,6 @@ svg {
 }
 
 .nav-expanded {
-
   overflow: hidden;
   transition: max-height 0.5s ease;
 }
@@ -134,7 +132,7 @@ svg {
   padding: 15px 42px;
   color: rgba(0, 0, 0, 0.5);
   font-weight: normal;
-  border: 1px solid #F5F5F5;
+  border: 1px solid #f5f5f5;
   cursor: pointer;
 }
 .select nav a:hover {
@@ -145,3 +143,21 @@ svg {
     top: 65px;
     z-index: 5;
     margin-bottom: 70px; */
+
+@media (max-width: 768px) {
+  .header {
+    flex-wrap: wrap;
+  }
+
+  #search {
+    width: 70%;
+    margin: 5px 0;
+  }
+  .search {
+    width: 100%;
+  }
+  /*.select nav {
+    position: static;
+    width: 100%;
+  } */
+}

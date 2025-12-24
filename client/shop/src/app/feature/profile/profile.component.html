@@ -1,0 +1,116 @@
+<div class="profile-container">
+  <div class="profile-card">
+    <div class="profile-header">
+      <div class="avatar">
+        <mat-icon>account_circle</mat-icon>
+      </div>
+      <h2>{{ user?.name || "User Profile" }}</h2>
+      <p class="role-badge" [class.admin]="user?.role === 'admin'">
+        {{ user?.role || "user" }}
+      </p>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div class="profile-content">
+      <form [formGroup]="profileForm" (ngSubmit)="saveProfile()">
+        <div class="form-section">
+          <h3>Personal Information</h3>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Full Name</mat-label>
+            <input matInput formControlName="name" [readonly]="!isEditMode" />
+            <mat-icon matPrefix>person</mat-icon>
+            <mat-error *ngIf="profileForm.get('name')?.hasError('required')">
+              Name is required
+            </mat-error>
+            <mat-error *ngIf="profileForm.get('name')?.hasError('minlength')">
+              Name must be at least 2 characters
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Email Address</mat-label>
+            <input matInput formControlName="email" readonly />
+            <mat-icon matPrefix>email</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Address</mat-label>
+            <textarea
+              matInput
+              formControlName="address"
+              [readonly]="!isEditMode"
+              rows="3"
+              placeholder="Enter your full address"
+            ></textarea>
+            <mat-icon matPrefix>home</mat-icon>
+            <mat-error *ngIf="profileForm.get('address')?.hasError('required')">
+              Address is required
+            </mat-error>
+            <mat-error
+              *ngIf="profileForm.get('address')?.hasError('minlength')"
+            >
+              Address must be at least 10 characters
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="form-section">
+          <h3>Account Details</h3>
+          <div class="info-row">
+            <mat-icon>verified_user</mat-icon>
+            <span>User ID: {{ user?.uid }}</span>
+          </div>
+        </div>
+
+        <div class="action-buttons">
+          <button
+            *ngIf="!isEditMode"
+            mat-raised-button
+            color="primary"
+            type="button"
+            (click)="toggleEditMode()"
+          >
+            <mat-icon>edit</mat-icon>
+            Edit Profile
+          </button>
+
+          <div *ngIf="isEditMode" class="edit-buttons">
+            <button
+              mat-raised-button
+              color="primary"
+              type="submit"
+              [disabled]="!profileForm.valid"
+            >
+              <mat-icon>save</mat-icon>
+              Save Changes
+            </button>
+            <button mat-stroked-button type="button" (click)="cancelEdit()">
+              <mat-icon>cancel</mat-icon>
+              Cancel
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="profile-sidebar">
+    <div class="sidebar-card">
+      <h3>Quick Actions</h3>
+      <button mat-stroked-button class="full-width" routerLink="/orders">
+        <mat-icon>shopping_bag</mat-icon>
+        My Orders
+      </button>
+      <button mat-stroked-button class="full-width" routerLink="/wishlist">
+        <mat-icon>favorite</mat-icon>
+        My Wishlist
+      </button>
+      <button mat-stroked-button class="full-width" routerLink="/home">
+        <mat-icon>shopping_cart</mat-icon>
+        Continue Shopping
+      </button>
+    </div>
+  </div>
+</div>

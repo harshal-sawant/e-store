@@ -25,36 +25,49 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   {
     path: 'auth',
-    loadChildren: () => import('./core/auth/auth.module').then(m => m.AuthModule)
+    loadChildren: () =>
+      import('./core/auth/auth.module').then((m) => m.AuthModule),
   },
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
+    loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
   },
   {
     path: 'checkout',
-    loadChildren: () => import('./feature/checkout/checkout.module').then(m => m.CheckoutModule)
+    loadChildren: () =>
+      import('./feature/checkout/checkout.module').then(
+        (m) => m.CheckoutModule
+      ),
   },
   {
     path: 'wishlist',
-    loadChildren: () => import('./wishlist/wishlist.module').then(m => m.WishlistModule)
+    loadChildren: () =>
+      import('./wishlist/wishlist.module').then((m) => m.WishlistModule),
   },
   {
     path: 'cart',
-    loadChildren: () => import('./feature/cart-page/cart-page.module').then(m => m.CartPageModule)
+    loadChildren: () =>
+      import('./feature/cart-page/cart-page.module').then(
+        (m) => m.CartPageModule
+      ),
   },
   {
     path: 'products',
-    loadChildren: () => import('./feature/products/products.module').then(m => m.ProductsModule)
+    loadChildren: () =>
+      import('./feature/products/products.module').then(
+        (m) => m.ProductsModule
+      ),
   },
-  { path: '**', redirectTo: 'home' }  // Optional: Redirect unknown routes to home
+  {
+    path: 'profile',
+    loadChildren: () =>
+      import('./feature/profile/profile.module').then((m) => m.ProfileModule),
+  },
+  { path: '**', redirectTo: 'home' }, // Optional: Redirect unknown routes to home
 ];
-
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' })],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
-
-
+export class AppRoutingModule {}
