@@ -6,7 +6,8 @@
     </select>
     <span><strong>Contact: </strong>{{ "example@site.com" }}</span>
   </div>
-  <div class="header" *ngIf="showHeader" [class.sticky]="sticky">
+  <!-- [class.sticky]="sticky" -->
+  <div class="header" *ngIf="showHeader">
     <h1 class="logo" routerLink="/home">E-store</h1>
     <div class="select" *ngIf="showCtgSelect">
       <span class="nav-btn" (click)="navToggle()">

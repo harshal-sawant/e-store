@@ -14,7 +14,7 @@
   font-weight: 500;
   text-wrap: wrap;
   width: 40%;
-  line-height: 40px;;
+  line-height: 40px;
 }
 .landing .wrapper p {
   text-wrap: wrap;
@@ -44,7 +44,7 @@
   border: 2px solid #768e85;
 }
 .landing img {
-  width: 1200px;
+  width: 100%;
 }
 .container {
   position: relative;
@@ -167,9 +167,8 @@ section {
 }
 .box.furniture.responisve {
   display: none;
-
 }
-.box.furniture.responisve img{
+.box.furniture.responisve img {
   top: -140px;
 }
 @media (max-width: 1400px) {
@@ -313,15 +312,7 @@ section {
   font-size: 18px;
   text-align: center;
 }
-@media (max-width: 992px) {
-  .products-showcase .info-text {
-    position: absolute;
-    width: 500px;
-  }
-  .products-showcase .element {
-    top: 70px;
-  }
-}
+
 section.info {
   margin-right: auto;
   margin-left: auto;
@@ -426,4 +417,41 @@ a:visited {
 }
 a:hover {
   color: #125699;
+}
+
+@media (max-width: 992px) {
+  .products-showcase .info-text {
+    position: absolute;
+    width: auto;
+  }
+  .products-showcase .element {
+    top: 70px;
+  }
+}
+
+@media (max-width: 768px) {
+  .categories .holder {
+    flex-direction: column;
+  }
+  .products-showcase {
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  .categories .listbox {
+    right: 0;
+  }
+
+  .products-showcase .element {
+    top: 70px;
+    width: 40%;
+  }
+
+  .landing img {
+    width: auto;
+  }
+
+  footer {
+    gap: 50px;
+  }
 }

@@ -84,8 +84,10 @@ svg {
   flex-direction: column;
   position: relative;
   height: 100%;
-  width: 300px;
+  width: 50%;
+  max-width: 200px;
   background-color: #ff8100;
+  padding: 10px 0;
 }
 .select .nav-btn {
   display: flex;
@@ -144,9 +146,18 @@ svg {
     z-index: 5;
     margin-bottom: 70px; */
 
+@media (min-width: 769px) {
+  .landing-image {
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
+}
+
 @media (max-width: 768px) {
   .header {
     flex-wrap: wrap;
+    height: auto;
   }
 
   #search {
@@ -155,7 +166,13 @@ svg {
   }
   .search {
     width: 100%;
+    padding: 0 10px;
   }
+
+  .select .nav-expanded {
+    top: 45px;
+  }
+
   /*.select nav {
     position: static;
     width: 100%;
