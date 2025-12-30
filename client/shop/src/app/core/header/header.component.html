@@ -56,7 +56,7 @@
       >
     </button>
 
-    <button mat-icon-button (click)="UpdatePersonInfo()">
+    <button *ngIf="isSignedIn" mat-icon-button (click)="UpdatePersonInfo()">
       <mat-icon>person</mat-icon>
     </button>
 

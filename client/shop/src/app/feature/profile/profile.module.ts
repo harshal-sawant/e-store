@@ -8,7 +8,7 @@ import { CoreModule } from '../../core/core.module';
 import { ProfileComponent } from './profile.component';
 
 const routes: Routes = [
-  { path: '', component: ProfileComponent }, // For /profile
+  { path: '', component: ProfileComponent, canActivate: [AuthGuard] }, // For /profile
 ];
 
 @NgModule({

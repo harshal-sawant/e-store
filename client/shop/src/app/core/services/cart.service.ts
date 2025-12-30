@@ -63,14 +63,14 @@ export class CartService extends BaseComponent {
 
   private updateCart() {
     return this.http.put<Product[]>(
-      `https://e-commerce-86f86-default-rtdb.firebaseio.com/${this.uid}/cart.json`,
+      `http://localhost:5000/${this.uid}/cart.json`,
       this.dbCart
     );
   }
 
   getCart(): Observable<Product[]> {
     return this.http.get<Product[]>(
-      `https://e-commerce-86f86-default-rtdb.firebaseio.com/${this.uid}/cart.json`
+      `http://localhost:5000/${this.uid}/cart.json`
     );
   }
 

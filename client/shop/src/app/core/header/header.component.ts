@@ -103,7 +103,7 @@ export class HeaderComponent extends BaseComponent implements OnInit {
   onPageSelect(event: Event): void {
     const selectedValue = (event.target as HTMLSelectElement).value;
     if (selectedValue === 'dashboard') {
-      window.location.href = 'https://dashboard-5b2fd.web.app/';
+      window.location.href = 'http://localhost:4200';
     }
   }
 

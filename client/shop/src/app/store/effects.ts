@@ -92,7 +92,7 @@ export class ProductsEffect {
   );
 }
 
-// this.http.put<Product[]>("https://e-commerce-86f86-default-rtdb.firebaseio.com/cart.json",
+// this.http.put<Product[]>("http://localhost:5000/cart.json",
 // list).pipe(takeUntil(this.destroy$)).subscribe(
 //   res => {
 //     console.log(res);

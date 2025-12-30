@@ -21,7 +21,7 @@ export interface AuthResponseData {
 const firebaseConfig = {
   apiKey: 'AIzaSyCql3Npno578hxnzN5mjD4SHjyLcdkWe4U',
   authDomain: 'e-commerce-86f86.firebaseapp.com',
-  databaseURL: 'https://e-commerce-86f86-default-rtdb.firebaseio.com',
+  databaseURL: 'http://localhost:5000',
   projectId: 'e-commerce-86f86',
   storageBucket: 'e-commerce-86f86.appspot.com',
   messagingSenderId: '919866914313',

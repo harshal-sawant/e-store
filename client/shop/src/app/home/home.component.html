@@ -84,7 +84,7 @@
   <h2 class="products-title">Popular categories</h2>
   <div class="container" style="gap: 15px">
     <div class="row">
-      <div class="box col-6 clothing" (click)="navigateToProducts('clothing')">
+      <div class="box col-6 clothing" (click)="navigateToProducts('Footwear')">
         <h2>FOOTWEAR</h2>
         <!-- <span>50 item</span> -->
         <img
@@ -97,19 +97,22 @@
       </div>
       <div
         class="box col-lg-6 col-3 electronics"
-        (click)="navigateToProducts('footer')"
+        (click)="navigateToProducts('women')"
       >
         <h2>Women</h2>
         <!-- <span>50 item</span> -->
         <img
-          src="../../assets/New folder/electronics 2-min-misssn.png"
+          src="../../assets/women.png"
           width="300"
           height="300"
           loading="lazy"
           alt=""
         />
       </div>
-      <div class="box col-lg-6 col-3 sport" (click)="navigateToProducts('')">
+      <div
+        class="box col-lg-6 col-3 sport"
+        (click)="navigateToProducts('kids')"
+      >
         <h2>Kids</h2>
         <!-- <span>50 item</span> -->
         <img
@@ -122,7 +125,7 @@
       </div>
       <div
         class="box col-6 furniture responisve"
-        (click)="navigateToProducts('kids')"
+        (click)="navigateToProducts('Mens')"
       >
         <h2>Jeans</h2>
         <!-- <span>50 item</span> -->
@@ -136,7 +139,10 @@
       </div>
     </div>
     <div class="row">
-      <div class="box col-3 kitchen" (click)="navigateToProducts('')">
+      <div
+        class="box col-3 kitchen"
+        (click)="navigateToProducts('WESTERNWEAR')"
+      >
         <h2>WESTERNWEAR</h2>
         <!-- <span>50 item</span> -->
         <img
@@ -147,7 +153,7 @@
           alt=""
         />
       </div>
-      <div class="box col-3 beauty" (click)="navigateToProducts('beauty')">
+      <div class="box col-3 beauty" (click)="navigateToProducts('ETHNICWEAR')">
         <h2>ETHNICWEAR</h2>
         <!-- <span>50 item</span> -->
         <img
@@ -158,10 +164,7 @@
           alt=""
         />
       </div>
-      <div
-        class="box col-6 furniture"
-        (click)="navigateToProducts('furniture')"
-      >
+      <div class="box col-6 furniture" (click)="navigateToProducts('bags')">
         <h2>Bags</h2>
         <!-- <span>50 item</span> -->
         <img

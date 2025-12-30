@@ -46,14 +46,14 @@ export class WishlistService extends BaseComponent {
 
   private updateWishlist() {
     return this.http.put<Product[]>(
-      `https://e-commerce-86f86-default-rtdb.firebaseio.com/${this.uid}/wishlist.json`,
+      `http://localhost:5000/${this.uid}/wishlist.json`,
       this.dbWishlist
     );
   }
 
   getWishlist(): Observable<Product[]> {
     return this.http.get<Product[]>(
-      `https://e-commerce-86f86-default-rtdb.firebaseio.com/${this.uid}/wishlist.json`
+      `http://localhost:5000/${this.uid}/wishlist.json`
     );
   }
 }

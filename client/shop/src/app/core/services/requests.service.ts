@@ -145,7 +145,7 @@ export class RequestsService extends BaseComponent {
   }
   updateProducts(products: Product[]) {
     return this.http.put<any>(
-      `https://e-commerce-86f86-default-rtdb.firebaseio.com/${this.uid}/cart.json`,
+      `http://localhost:5000/${this.uid}/cart.json`,
       products
     );
   }
@@ -197,13 +197,13 @@ export class RequestsService extends BaseComponent {
     this.dbWishlist = removeDuplicates(this.dbWishlist, product);
     this.wishlistLengthSubject.next(this.dbWishlist.length);
     return this.http.put<Product[]>(
-      `https://e-commerce-86f86-default-rtdb.firebaseio.com/${this.uid}/wishlist.json`,
+      `http://localhost:5000/${this.uid}/wishlist.json`,
       this.dbWishlist
     );
   }
   getWishlist() {
     return this.http.get<Product[]>(
-      `https://e-commerce-86f86-default-rtdb.firebaseio.com/${this.uid}/wishlist.json`
+      `http://localhost:5000/${this.uid}/wishlist.json`
     );
   }
   addToCart(product: Product) {
@@ -214,14 +214,14 @@ export class RequestsService extends BaseComponent {
     this.cartLengthSubject.next(this.dbCart.length);
 
     return this.http.put<Product[]>(
-      `https://e-commerce-86f86-default-rtdb.firebaseio.com/${this.uid}/cart.json`,
+      `http://localhost:5000/${this.uid}/cart.json`,
       this.dbCart
     );
   }
   // ${this.uid}/
   getCart() {
     return this.http.get<Product[]>(
-      `https://e-commerce-86f86-default-rtdb.firebaseio.com/${this.uid}/cart.json`
+      `http://localhost:5000/${this.uid}/cart.json`
     );
   }
   draft: any = [];
@@ -236,7 +236,7 @@ export class RequestsService extends BaseComponent {
       this.cartLengthSubject.next(this.dbCart.length);
     }
     return this.http.put<Product[]>(
-      `https://e-commerce-86f86-default-rtdb.firebaseio.com/${this.uid}/${listName}.json`,
+      `http://localhost:5000/${this.uid}/${listName}.json`,
       this.dbCart
     );
   }
@@ -252,7 +252,7 @@ export class RequestsService extends BaseComponent {
       this.wishlistLengthSubject.next(this.dbWishlist.length);
     }
     return this.http.put<Product[]>(
-      `https://e-commerce-86f86-default-rtdb.firebaseio.com/${this.uid}/${listName}.json`,
+      `http://localhost:5000/${this.uid}/${listName}.json`,
       this.dbWishlist
     );
   }
@@ -288,11 +288,11 @@ export class RequestsService extends BaseComponent {
   //   let comments: Comment;
   //   comments = {username: "Abdo",  comment: comment, rating: 4};
   //   console.log(uid);
-  //   return this.http.put<Comment>(`https://e-commerce-86f86-default-rtdb.firebaseio.com/comments/${id}/${uid}.json`,
+  //   return this.http.put<Comment>(`http://localhost:5000/comments/${id}/${uid}.json`,
   //   comments)
   // }
   // getComments(id: number) {
-  //   return this.http.get<any>(`https://e-commerce-86f86-default-rtdb.firebaseio.com/comments/${id}.json`)
+  //   return this.http.get<any>(`http://localhost:5000/comments/${id}.json`)
   // }
   // ========================== Test ===============================
   //   removeItem(componentName: string, id: number) {
@@ -329,7 +329,7 @@ export class RequestsService extends BaseComponent {
   //     // componentName === this.cart? this.dbCart = list : this.dbWishlist = list;
   //     console.log(listName);
   //     console.log(list);
-  //     return this.http.put<Product[]>(`https://e-commerce-86f86-default-rtdb.firebaseio.com/${listName}.json`,
+  //     return this.http.put<Product[]>(`http://localhost:5000/${listName}.json`,
   //     list)
   //   }
 }
