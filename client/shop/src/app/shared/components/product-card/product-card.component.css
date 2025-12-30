@@ -1,6 +1,7 @@
 .product {
   background-color: white;
   width: 100%;
+  max-width: 250px;
   /* height: 250px; */
   height: 100%;
   color: black;
@@ -17,7 +18,7 @@
   z-index: 10;
   transition: 0.3s;
 }
-.wishlist-btn mat-icon{
+.wishlist-btn mat-icon {
   color: red;
 }
 .product:hover {
@@ -95,7 +96,6 @@
 .cart-btn span {
   flex-basis: 90%;
 }
-
 
 /* .mat-mdc-icon-button {
   width: 45px;

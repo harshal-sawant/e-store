@@ -10,11 +10,31 @@
       <button class="explore-btn" routerLink="/products">Explore</button>
     </div>
   </div>
+
   <img
     src="../../assets/optimized-pexels-karolina-grabowska-min.webp"
     class="landing-image"
     alt="landing image"
   />
+
+  <p-carousel
+    [value]="specialOffers"
+    [numVisible]="3"
+    [numScroll]="3"
+    [circular]="false"
+    [responsiveOptions]="responsiveOptions"
+  >
+    <ng-template let-offer #item>
+      <div class="border border-surface rounded-border m-2 p-4">
+        <div class="mb-4 font-medium fw-bold">{{ offer.title }}</div>
+        <div class="mb-4">
+          <div class="relative mx-auto">
+            {{ offer.description }}
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </p-carousel>
 </section>
 
 <section class="container">
@@ -65,8 +85,8 @@
   <div class="container" style="gap: 15px">
     <div class="row">
       <div class="box col-6 clothing" (click)="navigateToProducts('clothing')">
-        <h2>Clothes and shoes</h2>
-        <span>50 item</span>
+        <h2>FOOTWEAR</h2>
+        <!-- <span>50 item</span> -->
         <img
           src="../../assets/pngwing.com (1).webp"
           width="250"
@@ -77,10 +97,10 @@
       </div>
       <div
         class="box col-lg-6 col-3 electronics"
-        (click)="navigateToProducts('electronics')"
+        (click)="navigateToProducts('footer')"
       >
-        <h2>Electronics</h2>
-        <span>50 item</span>
+        <h2>Women</h2>
+        <!-- <span>50 item</span> -->
         <img
           src="../../assets/New folder/electronics 2-min-misssn.png"
           width="300"
@@ -90,10 +110,10 @@
         />
       </div>
       <div class="box col-lg-6 col-3 sport" (click)="navigateToProducts('')">
-        <h2>Sport</h2>
-        <span>50 item</span>
+        <h2>Kids</h2>
+        <!-- <span>50 item</span> -->
         <img
-          src="../../assets/New folder/sport 1.webp"
+          src="../../assets/women2.png"
           width="300"
           height="300"
           loading="lazy"
@@ -102,10 +122,10 @@
       </div>
       <div
         class="box col-6 furniture responisve"
-        (click)="navigateToProducts('furniture')"
+        (click)="navigateToProducts('kids')"
       >
-        <h2>Furniture</h2>
-        <span>50 item</span>
+        <h2>Jeans</h2>
+        <!-- <span>50 item</span> -->
         <img
           src="../../assets/98.webp"
           width="611"
@@ -117,10 +137,10 @@
     </div>
     <div class="row">
       <div class="box col-3 kitchen" (click)="navigateToProducts('')">
-        <h2>Kitchen</h2>
-        <span>50 item</span>
+        <h2>WESTERNWEAR</h2>
+        <!-- <span>50 item</span> -->
         <img
-          src="../../assets/New folder/kitchen 1.webp"
+          src="../../assets/women3.png"
           width="286"
           height="280"
           loading="lazy"
@@ -128,10 +148,10 @@
         />
       </div>
       <div class="box col-3 beauty" (click)="navigateToProducts('beauty')">
-        <h2>Beauty</h2>
-        <span>50 item</span>
+        <h2>ETHNICWEAR</h2>
+        <!-- <span>50 item</span> -->
         <img
-          src="../../assets/10571891.webp"
+          src="../../assets/women.png"
           width="287"
           height="243"
           loading="lazy"
@@ -142,10 +162,10 @@
         class="box col-6 furniture"
         (click)="navigateToProducts('furniture')"
       >
-        <h2>Furniture</h2>
-        <span>50 item</span>
+        <h2>Bags</h2>
+        <!-- <span>50 item</span> -->
         <img
-          src="../../assets/98.webp"
+          src="../../assets/purse.png"
           width="611"
           height="344"
           loading="lazy"
@@ -157,7 +177,7 @@
 </section>
 <section class="container products-showcase">
   <div class="info-text">
-    <h1 style="font-size: 30px; font-weight: 500">Build Your Gaming Setup.</h1>
+    <h1 style="font-size: 30px; font-weight: 500">New Arrivals</h1>
     <p>
       Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit.
       Aliquam vulputate velit imperdiet dolor tempor tristique.
@@ -166,41 +186,38 @@
   <div class="element">
     <div class="image-holder">
       <img
-        src="../../assets/pngwing.com (14).webp"
+        src="../../assets/shirt2.jpg"
         width="300"
         height="300"
         loading="lazy"
         alt="image"
       />
     </div>
-    <h3>Gaming Chair</h3>
-    <span>$120</span>
+    <h3>Solid Formal Full Sleeves Shirt</h3>
   </div>
   <div class="element">
     <div class="image-holder">
       <img
-        src="../../assets/pngwing.com (17).webp"
+        src="../../assets/clothing 4.png"
         width="300"
         height="300"
         loading="lazy"
         alt="image"
       />
     </div>
-    <h3>Ps4</h3>
-    <span>$299</span>
+    <h3>Casual Men Regular</h3>
   </div>
   <div class="element">
     <div class="image-holder">
       <img
-        src="../../assets/pngwing.com (19).webp"
+        src="../../assets/jeans.jpg"
         width="300"
         height="192"
         loading="lazy"
         alt="image"
       />
     </div>
-    <h3>Gaming Keyboard</h3>
-    <span>$50</span>
+    <h3>Charcoal Slim Fit Jeans</h3>
   </div>
 </section>
 <section class="info container">
@@ -209,18 +226,15 @@
     <div class="elements col-lg-6 col-md-12">
       <div class="row" style="flex: none; justify-content: center">
         <h2 class="products-title">Why Choose Us</h2>
-        <p class="title-text">
-          Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit.
-          Aliquam vulputate.
-        </p>
+        <p class="title-text">The #1 online shopping website</p>
       </div>
       <div class="row">
         <div class="element col">
           <span class="material-symbols-outlined icon">thumb_up</span>
           <h1>Exceptional Quality</h1>
           <p>
-            Durable, weather-proof metal and a premium finish define our wall
-            art's exceptional quality.
+            You will find an extensive range of premium-quality fashion
+            clothing.
           </p>
         </div>
         <div class="element col">
@@ -234,10 +248,10 @@
       <div class="row">
         <div class="element col">
           <span class="material-symbols-outlined icon">description</span>
-          <h1>Easy Installation</h1>
+          <h1>Premium style range</h1>
           <p>
-            No need for professional help; our wall art comes with simple
-            instructions and all necessary hardware.
+            Whether you are looking for options that are minimalistic, bold,
+            street style, grunge, cool, or sophisticated, we have them all!
           </p>
         </div>
         <div class="element col">
@@ -255,9 +269,9 @@
     <div class="image-wrapper col-6">
       <img
         loading="lazy"
-        src="../../assets/why-us-img.webp"
-        width="623"
-        height="713"
+        src="../../assets/cloths-stand.jpg"
+        width="613"
+        height="475"
         style="width: 100%"
         alt="image"
       />

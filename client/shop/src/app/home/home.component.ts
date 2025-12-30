@@ -23,26 +23,24 @@ interface SortByOption {
   code: string;
 }
 @Component({
-    selector: 'app-home',
-    templateUrl: './home.component.html',
-    styleUrls: ['./home.component.css'],
-    standalone: false
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css'],
+  standalone: false,
 })
 export class HomeComponent extends BaseComponent implements OnInit {
   // })
   brands = [
-    { image: 'pngwing.com (10).webp' },
-    { image: 'pngwing.com (3).webp' },
-    { image: 'pngwing.com (12).webp' },
-    { image: 'pngwing.com (13).webp' },
-    { image: 'pngwing.com (6).webp' },
-    { image: 'pngwing.com (2).webp' },
-    { image: 'pngwing.com (4).webp' },
-    { image: 'pngwing.com (8).webp' },
-    { image: 'pngwing.com (5).webp' },
-    { image: 'pngwing.com (7).webp' },
-    { image: 'pngwing.com (9).webp' },
-    { image: 'pngwing.com.webp' },
+    { image: 'spykar.jpg' },
+    { image: 'armani.jpg' },
+    { image: 'dg.jpg' },
+    { image: 'gucci.jpg' },
+    { image: 'jimmy.jpg' },
+    { image: 'lv.jpg' },
+    { image: 'zara.png' },
+    { image: 'hm.png' },
+    { image: 'prada.png' },
+    { image: 'chanel.png' },
   ];
   products!: Product[];
   productsLen: number = 0;
@@ -65,6 +63,57 @@ export class HomeComponent extends BaseComponent implements OnInit {
   currentCategory: string | undefined;
   categories: any;
   cartToggle: boolean = false;
+
+  specialOffers = [
+    {
+      title: 'Biggest Year End Sale',
+      description: 'Get An Additional 15% Cashback',
+    },
+    {
+      title: 'Polo T-Shirts',
+      description: 'Pick Any 3 at $99',
+    },
+    {
+      title: 'Newly Launched Socks ',
+      description: 'Starting at $25',
+    },
+    {
+      title: 'Biggest Year End Sale',
+      description: 'Get An Additional 15% Cashback',
+    },
+    {
+      title: 'Polo T-Shirts',
+      description: 'Pick Any 3 at $99',
+    },
+    {
+      title: 'Newly Launched Socks ',
+      description: 'Starting at $25',
+    },
+  ];
+
+  responsiveOptions = [
+    {
+      breakpoint: '1400px',
+      numVisible: 2,
+      numScroll: 1,
+    },
+    {
+      breakpoint: '1199px',
+      numVisible: 2,
+      numScroll: 1,
+    },
+    {
+      breakpoint: '767px',
+      numVisible: 2,
+      numScroll: 1,
+    },
+    {
+      breakpoint: '575px',
+      numVisible: 1,
+      numScroll: 1,
+    },
+  ];
+
   constructor(
     private _ProductService: ProductService,
     private productsService: ProductsService,

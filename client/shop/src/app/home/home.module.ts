@@ -5,23 +5,19 @@ import { MatChipsModule } from '@angular/material/chips';
 import { LoadingModule } from '../shared/loading/loading.module';
 import { RouterModule, Routes } from '@angular/router';
 import { CoreModule } from '../core/core.module';
+import { CarouselModule } from 'primeng/carousel';
 
-const routes: Routes = [
-  { path: '', component: HomeComponent }
-];
-
+const routes: Routes = [{ path: '', component: HomeComponent }];
 
 @NgModule({
-  declarations: [
-    HomeComponent
-  ],
+  declarations: [HomeComponent],
   imports: [
     CommonModule,
     MatChipsModule,
-    CoreModule,        // For core components like Header, Auth, etc.
+    CarouselModule,
+    CoreModule, // For core components like Header, Auth, etc.
     LoadingModule,
-    RouterModule.forChild(routes)
-
-  ]
+    RouterModule.forChild(routes),
+  ],
 })
-export class HomeModule { }
+export class HomeModule {}
