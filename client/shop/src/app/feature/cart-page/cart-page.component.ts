@@ -8,10 +8,10 @@ import { selectCartProducts } from '../../store/selectors';
 import { BaseComponent } from 'global/base/base.component';
 
 @Component({
-    selector: 'app-cart-page',
-    templateUrl: './cart-page.component.html',
-    styleUrls: ['./cart-page.component.css'],
-    standalone: false
+  selector: 'app-cart-page',
+  templateUrl: './cart-page.component.html',
+  styleUrls: ['./cart-page.component.scss'],
+  standalone: false,
 })
 export class CartPageComponent
   extends BaseComponent
@@ -36,16 +36,6 @@ export class CartPageComponent
     super();
   }
   ngOnInit(): void {
-    // this.store.select("cartReducer")
-    // this.storeSub = this.store.pipe(takeUntil(this.destroy$)).subscribe(
-    //   data => {
-    //     this.products = data.cartReducer.products
-    //     console.log(this.products);
-    //     if (this.products !== null) {this.getTotalPrice(this.products)}
-    //   }
-    // )
-
-    // this.value1 = product.unit;
     this.ProductsObrsv$ = this.store.pipe(select(selectCartProducts));
     this.storeSub = this.ProductsObrsv$.pipe(
       takeUntil(this.destroy$)
@@ -66,7 +56,6 @@ export class CartPageComponent
     // Update the product
     product = { ...product, unit: selectedValue };
 
-    console.log(product);
     // Add the updated product to the products
     const index = this.products.findIndex((p) => p._id === product._id);
     let array = [...this.products];
@@ -96,8 +85,6 @@ export class CartPageComponent
   }
 
   removeDuplicates(array: Product[], product: Product): Product[] {
-    console.log('=============================================');
-
     const index = array.findIndex((p) => p._id === product._id);
 
     if (index !== -1) {

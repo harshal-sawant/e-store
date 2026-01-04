@@ -35,7 +35,6 @@ export class AuthEffect {
               })
               .pipe(
                 tap((resData) => {
-                  console.log('start');
                   this.authService.setLogoutTimer(+resData.expiresIn);
                 }),
                 map((resData) => {
@@ -61,7 +60,6 @@ export class AuthEffect {
                   window.location.reload();
                 }),
                 catchError((errorRes) => {
-                  console.log(errorRes);
                   this.store.dispatch(
                     new authActions.SignInFail(handleError(errorRes))
                   );
@@ -119,7 +117,6 @@ export class AuthEffect {
                 window.location.reload();
               }),
               catchError((errorRes) => {
-                console.log(errorRes);
                 this.store.dispatch(
                   new authActions.SignInFail(handleError(errorRes))
                 );
@@ -143,8 +140,6 @@ const handleAuthentication = (
   // const user = new User(name, email, userId, token, expirationDate)
   const user = new User(uid, name, email, role, token, expiresIn);
   localStorage.setItem('userData', JSON.stringify(user));
-  console.log(user);
-
   // return new authActions.signIn({email: email, userId: userId, token: token, expirationDate: expirationDate, redirect: true})
 };
 function handleError(errorRes: any): any {

@@ -20,10 +20,10 @@ interface formData {
   stockQuantity: number;
 }
 @Component({
-    selector: 'app-create-product',
-    templateUrl: './create-product.component.html',
-    styleUrls: ['./create-product.component.css'],
-    standalone: false
+  selector: 'app-create-product',
+  templateUrl: './create-product.component.html',
+  styleUrls: ['./create-product.component.scss'],
+  standalone: false,
 })
 export class CreateProductComponent extends BaseComponent implements OnInit {
   base64: any;
@@ -86,14 +86,12 @@ export class CreateProductComponent extends BaseComponent implements OnInit {
           this.category = resProduct.category; // Initialize properties for form fields
           this.quantity = resProduct.stockQuantity; // Initialize properties for form fields
           this.base64 = resProduct.images[0]; // Initialize properties for form fields
-          console.log(resProduct);
         });
     }
   }
   // can add ngModel only
   onSubmit(form: NgForm): void {
     // form.value.fileToUpload = this.fileToUpload
-    console.log(form.controls['title']);
 
     form.value.images = this.base64Images;
     this.resultProduct = {
@@ -110,7 +108,6 @@ export class CreateProductComponent extends BaseComponent implements OnInit {
       this.productsService
         .createProduct(this.resultProduct)
         .subscribe((res) => {
-          console.log('Product created successfully:', res);
           form.resetForm();
         });
       // You can add further logic to send the form data to your backend or perform other operations.
@@ -118,7 +115,6 @@ export class CreateProductComponent extends BaseComponent implements OnInit {
       this.productsService
         .updateProduct(this.id, form.value)
         .subscribe((res) => {
-          console.log('Product updated successfully:', res);
           form.resetForm();
         });
     }
@@ -149,63 +145,28 @@ export class CreateProductComponent extends BaseComponent implements OnInit {
       reader.onload = () => {
         if (remainingSlots > 0) {
           this.base64Images.push(reader.result);
-          console.log(this.base64Images);
-        } else {
-          console.log('Your limit is 3 images.');
         }
       };
-      // const reader = new FileReader();
-      // reader.readAsDataURL(file);
-
-      // reader.onload = () => {
-      // if (reader.result  && typeof reader.result === 'string') {
-      //   if (remainingSlots > 0) {
-      //     // Convert the base64 string to a Buffer
-      //     const base64String = reader.result.split(',')[1]; // Remove the data URL prefix
-      //     const imageBuffer = Buffer.from(base64String, 'base64');
-
-      //     // Now you can push the buffer to your array
-      //     this.base64Images.push(imageBuffer);
-
-      //     console.log(this.base64Images); // This will log the buffer array
-      //   } else {
-      //     console.log("Your limit is 3 images.");
-      //   }
-      // }
-      // };
-
-      // const file = this.fileToUpload[0];
-      // const reader = new FileReader();
-      // reader.readAsDataURL(file)
-      // reader.onload = ()=> {
-      //   this.base64 = reader.result
-      //   console.log(this.base64);
     }
   }
   addUrl(form: NgForm) {
     let value = form.controls['imageUrl'].value;
-    console.log(form.controls);
 
     const remainingSlots = 3 - this.base64Images.length; // 2 1 0
     if (remainingSlots > 0) {
       this.base64Images.push(value);
-      console.log(this.base64Images);
       // Mark the file control as valid
       const fileControl = form.controls['file'];
       const urlControl = form.controls['imageUrl'];
       if (fileControl) {
         fileControl.setErrors(null); // This makes the file control valid
         fileControl.markAsTouched(); // Optionally mark it as touched
-        console.log(fileControl);
       }
       if (urlControl) {
         urlControl.setErrors(null); // This makes the control valid
         urlControl.markAsTouched(); // Optionally mark it as touched
-        console.log(urlControl);
       }
       this.imageUrl = '';
-    } else {
-      console.log('Your limit is 3 images.');
     }
   }
   switchAddCtgMode() {
@@ -245,7 +206,6 @@ async function handleImageUpload(file: File) {
   try {
     const compressedFile = await compressImage(file);
     const base64String = await convertToBase64(compressedFile);
-    console.log('Compressed and converted image:', base64String);
     // You can now use the base64 string as needed, such as sending it to the backend
   } catch (error) {
     console.error('Error processing image:', error);

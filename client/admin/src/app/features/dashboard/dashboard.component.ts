@@ -4,10 +4,10 @@ import { BaseComponent } from 'global/base/base.component';
 import { takeUntil } from 'rxjs';
 
 @Component({
-    selector: 'app-dashboard',
-    templateUrl: './dashboard.component.html',
-    styleUrls: ['./dashboard.component.css'],
-    standalone: false
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.scss'],
+  standalone: false,
 })
 export class DashboardComponent extends BaseComponent implements OnInit {
   constructor(private productsService: ProductsService) {
@@ -26,7 +26,6 @@ export class DashboardComponent extends BaseComponent implements OnInit {
       .getOrders()
       .pipe(takeUntil(this.destroy$))
       .subscribe((orders) => {
-        console.log(orders);
         this.ordersNum = orders.length;
       });
   }

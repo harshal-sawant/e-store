@@ -25,7 +25,7 @@ interface SortByOption {
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
+  styleUrls: ['./home.component.scss'],
   standalone: false,
 })
 export class HomeComponent extends BaseComponent implements OnInit {
@@ -141,7 +141,6 @@ export class HomeComponent extends BaseComponent implements OnInit {
       .pipe(takeUntil(this.destroy$))
       .subscribe((res: any) => {
         this.categories = res.categories;
-        console.log(this.categories);
       });
   }
   convertRangeToCurrency(range: number[]): string {
@@ -155,7 +154,6 @@ export class HomeComponent extends BaseComponent implements OnInit {
     this.onGetAll(this.currentCategory, this.selectedSortByOption.code);
   }
   getProductswithRangePrice(range: number[]) {
-    console.log(range.join(','));
     this.onGetAll(
       this.currentCategory,
       this.selectedSortByOption.code,
@@ -187,8 +185,6 @@ export class HomeComponent extends BaseComponent implements OnInit {
     limit?: number
   ) {
     this.currentCategory = category;
-    console.log(sortOption);
-    console.log(category, sortOption, numericFilter);
     this._ProductService
       .getAll(undefined, category, sortOption, numericFilter, 4)
       .pipe(takeUntil(this.destroy$))
@@ -203,7 +199,6 @@ export class HomeComponent extends BaseComponent implements OnInit {
   }
   isSignedIn() {
     let user = localStorage.getItem('userData');
-    console.log(user);
     return user;
   }
   private extendedBrands: any[] = [];

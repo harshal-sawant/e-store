@@ -1,5 +1,5 @@
-import { Product } from "../shared/product.model";
-import * as ProductsActions from "./actions";
+import { Product } from '../shared/product.model';
+import * as ProductsActions from './actions';
 
 export interface AppState {
   productsReducer: productsState;
@@ -11,11 +11,10 @@ export interface productsState {
 
 export const initialState: productsState = {
   products: [],
-  error: ""
-}
+  error: '',
+};
 
 // ==================== Products =================
-
 
 // Reducer
 
@@ -25,21 +24,22 @@ export const initialState: productsState = {
 
 // typescript
 // Copy code
-export function cartReducer(store = initialState, action: ProductsActions.ProductsActions): productsState {
+export function cartReducer(
+  store = initialState,
+  action: ProductsActions.ProductsActions
+): productsState {
   switch (action.type) {
     // INITIALIZESTATE
     case ProductsActions.INITIALIZESTATE:
-      let initProducts = (action as ProductsActions.initializeStateAction).payload;
-      console.log(typeof store.products);
-      initProducts = initProducts == null? store.products : initProducts;
+      let initProducts = (action as ProductsActions.initializeStateAction)
+        .payload;
+      initProducts = initProducts == null ? store.products : initProducts;
       // initProducts = removeDuplicates(initProducts);
-      console.log("Cart Store: ", initProducts);
       // ==================== return fetched state =================
       return { ...store, products: [...store.products, ...initProducts] };
     // ADD_TO_CART
     case ProductsActions.ADD_TO_CART:
-      store.products === null ? store = initialState : store;
-      console.log(store.products);
+      store.products === null ? (store = initialState) : store;
       const newProducts = (action as ProductsActions.addToCartAction).payload;
       // let fliteredProducts = [...store.products].filter((p: Product) => p.id !== newProducts.id);
       return { ...store, products: [...store.products, newProducts] };
@@ -49,13 +49,18 @@ export function cartReducer(store = initialState, action: ProductsActions.Produc
       return { ...store, products: updateProducts };
     // DELETE
     case ProductsActions.DELETECARTITEM:
-      let removeId = (action as ProductsActions.deleteCartItemAction).payload[1];
-      let updatedProducts = [...store.products].filter((p: Product) => p._id !== removeId);
+      let removeId = (action as ProductsActions.deleteCartItemAction)
+        .payload[1];
+      let updatedProducts = [...store.products].filter(
+        (p: Product) => p._id !== removeId
+      );
       return { ...store, products: updatedProducts };
     case ProductsActions.CARTSUCCESS:
-      console.log(store.products);
       // return { ...store, products: [...store.products, (action as ProductsActions.CartSuccessAction).payload]};
-      return { ...store, products: (action as ProductsActions.CartSuccessAction).payload};
+      return {
+        ...store,
+        products: (action as ProductsActions.CartSuccessAction).payload,
+      };
     default:
       return store;
   }
@@ -79,6 +84,3 @@ export function cartReducer(store = initialState, action: ProductsActions.Produc
 //     this.payload = payload;
 //   }
 // }
-
-
-

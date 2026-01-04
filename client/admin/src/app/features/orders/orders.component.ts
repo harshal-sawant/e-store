@@ -4,10 +4,10 @@ import { BaseComponent } from 'shared/global/base/base.component';
 import { takeUntil } from 'rxjs';
 
 @Component({
-    selector: 'app-orders',
-    templateUrl: './orders.component.html',
-    styleUrls: ['./orders.component.css'],
-    standalone: false
+  selector: 'app-orders',
+  templateUrl: './orders.component.html',
+  styleUrls: ['./orders.component.scss'],
+  standalone: false,
 })
 // best practice: import interface Order and use it
 export class OrdersComponent extends BaseComponent implements OnInit {
@@ -22,7 +22,6 @@ export class OrdersComponent extends BaseComponent implements OnInit {
       .getOrders()
       .pipe(takeUntil(this.destroy$))
       .subscribe((orders) => {
-        console.log(orders);
         this.orders = orders;
       });
   }

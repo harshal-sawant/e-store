@@ -63,14 +63,14 @@ export class CartService extends BaseComponent {
 
   private updateCart() {
     return this.http.put<Product[]>(
-      `http://localhost:5000/${this.uid}/cart.json`,
+      `http://localhost:5000/api/v1/users/${this.uid}/cart`,
       this.dbCart
     );
   }
 
   getCart(): Observable<Product[]> {
     return this.http.get<Product[]>(
-      `http://localhost:5000/${this.uid}/cart.json`
+      `http://localhost:5000/api/v1/users/${this.uid}/cart`
     );
   }
 

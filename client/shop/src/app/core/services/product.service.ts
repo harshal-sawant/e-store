@@ -20,26 +20,21 @@ export class ProductService {
     if (search) {
       apiUrl = apiUrl + `${sign}search=${search}`;
       sign = '&';
-      console.log(apiUrl);
     }
     if (category) {
       apiUrl = apiUrl + `${sign}category=${category}`;
       sign = '&';
-      console.log(apiUrl);
     }
     if (sortOption) {
       apiUrl = apiUrl + `${sign}sort=${sortOption}`;
       sign = '&';
-      console.log(apiUrl);
     }
     if (numericFilter) {
       apiUrl = apiUrl + `${sign}numericFilter=${numericFilter}`;
       sign = '&';
-      console.log(apiUrl);
     }
     if (limit) {
       apiUrl = apiUrl + `${sign}limit=${limit}`;
-      console.log(apiUrl);
     }
     return this.http.get<{ success: boolean; data: Product[] }>(apiUrl).pipe(
       map((res) => {
@@ -74,11 +69,9 @@ export class ProductService {
     let apiUrl: string = `http://localhost:5000/api/v1/products?category=${category}`;
     if (sortOption) {
       apiUrl = apiUrl + `&sort=${sortOption}`;
-      console.log(apiUrl);
     }
     if (numericFilter) {
       apiUrl = apiUrl + `&numericFilter=${numericFilter}`;
-      console.log(apiUrl);
     }
     return this.http
       .get<{ success: boolean; data: Product[] }>(apiUrl)

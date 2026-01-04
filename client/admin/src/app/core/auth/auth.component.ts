@@ -6,10 +6,10 @@ import { BaseComponent } from 'global/base/base.component';
 import { takeUntil } from 'rxjs';
 
 @Component({
-    selector: 'app-auth',
-    templateUrl: './auth.component.html',
-    styleUrls: ['./auth.component.css'],
-    standalone: false
+  selector: 'app-auth',
+  templateUrl: './auth.component.html',
+  styleUrls: ['./auth.component.scss'],
+  standalone: false,
 })
 export class AuthComponent extends BaseComponent {
   isLoginMode: boolean = true;
@@ -20,23 +20,18 @@ export class AuthComponent extends BaseComponent {
   }
   onSignupSwitch() {
     this.isLoginMode = false;
-    console.log(this.isLoginMode);
   }
   onLoginSwitch() {
     this.isLoginMode = true;
-    console.log(this.isLoginMode);
   }
   onSubmit(form: NgForm) {
     const email = form.controls['email'];
-    console.log('Email: ', email.value, 'Status: ', email.status);
     const password = form.controls['password'];
-    console.log('Password: ', password.value, 'Status: ', password.status);
     this.authService
       .signIn(email.value, password.value)
       .pipe(takeUntil(this.destroy$))
       .subscribe(
         (authResponse) => {
-          console.log(authResponse);
           let user = new User(
             authResponse._id,
             authResponse.name,
@@ -47,18 +42,15 @@ export class AuthComponent extends BaseComponent {
           );
           if (user && user.role === 'admin') {
             localStorage.setItem('adminData', JSON.stringify(user));
-            console.log('Successful Login');
           }
           window.location.reload();
         },
         (err) => {
           this.authError = err;
-          console.log(err);
         }
       );
     if (this.isLoginMode) {
     } else if (!this.isLoginMode) {
-      console.log('Sign UP!');
     }
     this.submitted = true;
   }

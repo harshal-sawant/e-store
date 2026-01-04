@@ -17,10 +17,10 @@ import * as CommentsActions from '../../../shared/components/comment/store/comme
 import { BaseComponent } from 'global/base/base.component';
 
 @Component({
-    selector: 'app-product-details',
-    templateUrl: './product-details.component.html',
-    styleUrls: ['./product-details.component.css'],
-    standalone: false
+  selector: 'app-product-details',
+  templateUrl: './product-details.component.html',
+  styleUrls: ['./product-details.component.scss'],
+  standalone: false,
 })
 export class ProductDetailsComponent extends BaseComponent implements OnInit {
   statusCartText = 'Add to cart';
@@ -84,8 +84,14 @@ export class ProductDetailsComponent extends BaseComponent implements OnInit {
       this.commentService
         .getOneComment(this.productId, this.uid)
         .pipe(takeUntil(this.destroy$))
-        .subscribe((res: any) => {
-          this.commentExists = res.hasOwnProperty(this.uid as string);
+        .subscribe({
+          next: (res: any) => {
+            this.commentExists = res && res.hasOwnProperty(this.uid as string);
+          },
+          error: (error) => {
+            console.error('Error checking comment existence:', error);
+            this.commentExists = false;
+          },
         });
     }
   }
@@ -94,23 +100,36 @@ export class ProductDetailsComponent extends BaseComponent implements OnInit {
     this.commentService
       .getComments(id)
       .pipe(takeUntil(this.destroy$))
-      .subscribe((res) => {
-        this.comments = [];
-        console.log(res.comments);
+      .subscribe({
+        next: (res) => {
+          this.comments = [];
 
-        for (let key of Object.keys(res.comments[0].comments)) {
-          this.comments.push(
-            new Comment(
-              res.comments[0].comments[key].uid,
-              res.comments[0].comments[key].username,
-              res.comments[0].comments[key].comment,
-              res.comments[0].comments[key].rating
-            )
+          // Check if comments exist and are not empty
+          if (
+            res.comments &&
+            res.comments.length > 0 &&
+            res.comments[0].comments
+          ) {
+            for (let key of Object.keys(res.comments[0].comments)) {
+              this.comments.push(
+                new Comment(
+                  res.comments[0].comments[key].uid,
+                  res.comments[0].comments[key].username,
+                  res.comments[0].comments[key].comment,
+                  res.comments[0].comments[key].rating
+                )
+              );
+            }
+          }
+
+          this.store.dispatch(
+            new CommentsActions.initializeCommentsAction(this.comments)
           );
-        }
-        this.store.dispatch(
-          new CommentsActions.initializeCommentsAction(this.comments)
-        );
+        },
+        error: (error) => {
+          console.error('Error loading comments:', error);
+          this.comments = [];
+        },
       });
   }
 

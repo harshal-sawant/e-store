@@ -5,6 +5,7 @@ const loginRouter = require("./routes/auth");
 const ordersRouter = require("./routes/orders");
 const commentsRouter = require("./routes/comments");
 const categoriesRouter = require("./routes/categories");
+const userListsRouter = require("./routes/user-lists");
 const errorHandlerMiddleware = require("./middleware/error-handler");
 
 const port = process.env.PORT || 5000;
@@ -35,6 +36,7 @@ app.use("/api/v1/orders", ordersRouter);
 app.use("/api/v1/auth", loginRouter);
 app.use("/api/v1/comments", commentsRouter);
 app.use("/api/v1/categories", categoriesRouter);
+app.use("/api/v1/users", userListsRouter);
 app.use("/uploads", express.static("uploads"));
 app.use(errorHandlerMiddleware);
 const start = async () => {

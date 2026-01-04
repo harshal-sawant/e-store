@@ -11,10 +11,10 @@ interface SortByOption {
   code: string;
 }
 @Component({
-    selector: 'app-products',
-    templateUrl: './products.component.html',
-    styleUrls: ['./products.component.css'],
-    standalone: false
+  selector: 'app-products',
+  templateUrl: './products.component.html',
+  styleUrls: ['./products.component.scss'],
+  standalone: false,
 })
 export class ProductsComponent extends BaseComponent {
   products!: Product[];
@@ -83,7 +83,6 @@ export class ProductsComponent extends BaseComponent {
       .pipe(takeUntil(this.destroy$))
       .subscribe((res: any) => {
         this.categories = res.categories;
-        console.log(this.categories);
       });
   }
   convertRangeToCurrency(range: number[]): string {
@@ -101,7 +100,6 @@ export class ProductsComponent extends BaseComponent {
     );
   }
   getProductswithRangePrice(range: number[]) {
-    console.log(range.join(','));
     this.onGetAll(
       undefined,
       this.currentCategory,
@@ -125,8 +123,6 @@ export class ProductsComponent extends BaseComponent {
     numericFilter?: string
   ) {
     this.currentCategory = category;
-    console.log(sortOption);
-    console.log(search, category, sortOption, numericFilter);
     this.requestsService
       .getAll(search, category, sortOption, numericFilter)
       .pipe(takeUntil(this.destroy$))

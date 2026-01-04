@@ -23,7 +23,7 @@
               "client/admin/src/favicon.ico",
               "client/admin/src/assets"
             ],
-            "styles": ["client/admin/src/styles.css"],
+            "styles": ["client/admin/src/styles.scss"],
             "scripts": [],
             "browser": "client/admin/src/main.ts"
           },
@@ -83,7 +83,7 @@
               "client/admin/src/favicon.ico",
               "client/admin/src/assets"
             ],
-            "styles": ["client/admin/src/styles.css"],
+            "styles": ["client/admin/src/styles.scss"],
             "scripts": []
           }
         }
@@ -109,7 +109,7 @@
             "styles": [
               "@angular/material/prebuilt-themes/indigo-pink.css",
               "node_modules\\bootstrap\\dist\\css\\bootstrap.min.css",
-              "client/shop/src/styles.css"
+              "client/shop/src/styles.scss"
             ],
             "scripts": [],
             "browser": "client/shop/src/main.ts"
@@ -167,7 +167,7 @@
             "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "client/shop/tsconfig.spec.json",
             "assets": ["client/shop/src/favicon.ico", "client/shop/src/assets"],
-            "styles": ["client/shop/src/styles.css"],
+            "styles": ["client/shop/src/styles.scss"],
             "scripts": []
           }
         }

@@ -4,10 +4,10 @@ import { FormGroup, NgForm } from '@angular/forms';
 import { Store } from '@ngrx/store';
 
 @Component({
-    selector: 'app-auth',
-    templateUrl: './auth.component.html',
-    styleUrls: ['./auth.component.css'],
-    standalone: false
+  selector: 'app-auth',
+  templateUrl: './auth.component.html',
+  styleUrls: ['./auth.component.scss'],
+  standalone: false,
 })
 export class AuthComponent {
   isLoginMode: boolean = true;
@@ -18,13 +18,11 @@ export class AuthComponent {
   onSignupSwitch() {
     this.isLoginMode = false;
     this.clearForm();
-    console.log(this.isLoginMode);
   }
 
   onLoginSwitch() {
     this.isLoginMode = true;
     this.clearForm();
-    console.log(this.isLoginMode);
   }
 
   onSubmit(form: NgForm) {

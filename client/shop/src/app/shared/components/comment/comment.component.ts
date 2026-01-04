@@ -4,7 +4,7 @@ import { Comment } from '../../../core/interfaces/comment.model';
 @Component({
     selector: 'app-comment',
     templateUrl: './comment.component.html',
-    styleUrls: ['./comment.component.css'],
+    styleUrls: ['./comment.component.scss'],
     standalone: false
 })
 export class CommentComponent {

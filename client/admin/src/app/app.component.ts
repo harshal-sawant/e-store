@@ -4,10 +4,10 @@ import { BaseComponent } from 'global/base/base.component';
 import { takeUntil } from 'rxjs';
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css'],
-    standalone: false
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
+  standalone: false,
 })
 export class AppComponent extends BaseComponent implements OnInit {
   title = 'Dashboard';
@@ -31,10 +31,8 @@ export class AppComponent extends BaseComponent implements OnInit {
     const user = localStorage.getItem('adminData');
     if (user !== null) {
       const parsedData = JSON.parse(user);
-      console.log(parsedData);
       setTimeout(() => {
         localStorage.removeItem('adminData');
-        console.log('Logout');
         window.location.reload();
       }, parsedData._tokenExpirationDate);
     }

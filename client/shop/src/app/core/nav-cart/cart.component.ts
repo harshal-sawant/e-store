@@ -10,10 +10,10 @@ import { CartService } from '../services/cart.service';
 import { BaseComponent } from 'global/base/base.component';
 
 @Component({
-    selector: 'app-cart',
-    templateUrl: './cart.component.html',
-    styleUrls: ['./cart.component.css'],
-    standalone: false
+  selector: 'app-cart',
+  templateUrl: './cart.component.html',
+  styleUrls: ['./cart.component.scss'],
+  standalone: false,
 })
 export class CartComponent extends BaseComponent implements OnInit, OnDestroy {
   products: Product[] = [];
@@ -66,7 +66,6 @@ export class CartComponent extends BaseComponent implements OnInit, OnDestroy {
         .pipe(takeUntil(this.destroy$))
         .subscribe((status: boolean) => {
           this.cartStatus = status;
-          console.log('Cart Status:', this.cartStatus);
         })
     );
   }

@@ -5,10 +5,10 @@ import { BaseComponent } from 'global/base/base.component';
 import { takeUntil } from 'rxjs';
 
 @Component({
-    selector: 'app-products',
-    templateUrl: './products.component.html',
-    styleUrls: ['./products.component.css'],
-    standalone: false
+  selector: 'app-products',
+  templateUrl: './products.component.html',
+  styleUrls: ['./products.component.scss'],
+  standalone: false,
 })
 export class ProductsComponent extends BaseComponent implements OnInit {
   titleArrowUp: boolean = false;
@@ -26,7 +26,6 @@ export class ProductsComponent extends BaseComponent implements OnInit {
   }
   onUpdateProduct(id: string) {
     // this.productsService.updateProduct(id, body)
-    console.log(`Product's ID: ${id}`);
   }
   // onDeleteProduct(id: string, name: string) {
   onDeleteProduct(event: Event, product: Product) {
@@ -73,7 +72,6 @@ export class ProductsComponent extends BaseComponent implements OnInit {
       .getAll(category, sortOption)
       .pipe(takeUntil(this.destroy$))
       .subscribe((products) => {
-        console.log(products);
         this.products = products;
       });
   }

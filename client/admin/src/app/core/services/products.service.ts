@@ -23,16 +23,13 @@ export class ProductsService {
     if (category) {
       apiUrl = apiUrl + `${sign}category=${category}`;
       sign = '&';
-      console.log(apiUrl);
     }
     if (sortOption) {
       apiUrl = apiUrl + `${sign}sort=${sortOption}`;
       sign = '&';
-      console.log(apiUrl);
     }
     if (numericFilter) {
       apiUrl = apiUrl + `${sign}numericFilter=${numericFilter}`;
-      console.log(apiUrl);
     }
     return this.http.get<{ success: boolean; data: Product[] }>(apiUrl).pipe(
       map((res) => {
@@ -65,43 +62,14 @@ export class ProductsService {
         })
       );
   }
-  // createProduct(body: any, arrayOfFiles: File[]) {
   createProduct(body: any) {
-    console.log(body);
-
-    // const fd = new FormData();
-    // for (let i = 0; i < body.fileToUpload.length; i++) {
-    //   console.log(body.fileToUpload[i].name);
-    //   fd.append('uploads', body.fileToUpload[i], body.fileToUpload[i].name);
-    // }
-
-    // fd.append('title', body.title);
-    // fd.append('description', body.description);
-    // fd.append('price', body.price);
-    // fd.append('rating', '3');
-    // fd.append('images', body.fileToUpload);
-    // fd.append('category', body.category);
-    // fd.append('stockQuantity', '12');
-
     return this.http.post<any>(`http://localhost:5000/api/v1/products`, body);
   }
+
   updateProduct(id: string, body: any) {
-    console.log(body);
-
-    // const fd = new FormData();
-    // for (let i = 0; i < body.fileToUpload.length; i++) {
-    //   console.log(body.fileToUpload[i].name);
-    //   fd.append('uploads', body.fileToUpload[i], body.fileToUpload[i].name);
-    // }
-    // fd.append('title', body.title);
-    // fd.append('description', body.description);
-    // fd.append('price', body.price);
-    // fd.append('rating', '3');
-    // fd.append('category', body.category);
-    // fd.append('stockQuantity', '12');
-
     return this.http.patch(`http://localhost:5000/api/v1/products/${id}`, body);
   }
+
   deleteProduct(id: string) {
     this.http
       .delete(`http://localhost:5000/api/v1/products/${id}`)
@@ -120,9 +88,7 @@ export class ProductsService {
   deleteOrder(id: string) {
     this.http
       .delete(`http://localhost:5000/api/v1/orders/${id}`)
-      .subscribe((res) => {
-        console.log(res);
-      });
+      .subscribe((res) => {});
   }
   getAllCategories() {
     return this.http.get(`http://localhost:5000/api/v1/categories`);

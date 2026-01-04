@@ -42,7 +42,7 @@ interface Order {
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
-  styleUrls: ['./checkout.component.css'],
+  styleUrls: ['./checkout.component.scss'],
   standalone: false,
 })
 export class CheckoutComponent implements OnInit, OnDestroy, AfterViewInit {
@@ -96,19 +96,16 @@ export class CheckoutComponent implements OnInit, OnDestroy, AfterViewInit {
     this.ProductsObrsv$ = this.store.pipe(select(selectCartProducts));
     this.storeSub = this.ProductsObrsv$.subscribe((cartProducts: Product[]) => {
       this.products = cartProducts;
-      console.log(this.products);
       if (this.products !== null) {
         // Loop over the cart products array
         this.getTotalPrice(this.products);
       }
     });
-    console.log(this.totalPrice);
     const user = localStorage.getItem('userData');
 
     if (user) {
       const email = JSON.parse(user).email;
       this.userEmail = email;
-      console.log(this.order);
     }
   }
 
@@ -172,8 +169,6 @@ export class CheckoutComponent implements OnInit, OnDestroy, AfterViewInit {
     //   value = "*"
     // }
     // Format the value with masking
-    console.log(value.length);
-    console.log(value);
 
     // Update the model and input field
     this.cardNumber = value;
@@ -205,8 +200,7 @@ export class CheckoutComponent implements OnInit, OnDestroy, AfterViewInit {
       await this.processStripePayment(NewOrder, form.value.name);
     } else {
       // Traditional card processing (mock)
-      console.log(NewOrder);
-      this._OrderService.createOrder(NewOrder);
+      this._OrderService.createOrder(NewOrder).subscribe();
       this.paymentSuccess = true;
     }
   }
@@ -240,8 +234,6 @@ export class CheckoutComponent implements OnInit, OnDestroy, AfterViewInit {
 
       // In a real application, send paymentMethod.id to your backend
       // to create a payment intent and confirm the payment
-      console.log('Payment Method Created:', paymentMethod);
-      console.log('Order:', order);
 
       // Mock successful payment
       setTimeout(() => {
@@ -332,7 +324,6 @@ export class CheckoutComponent implements OnInit, OnDestroy, AfterViewInit {
     const [year, month] = input.value.split('-');
     // Return the formatted string as MM/YY
     this.expirationDate = `${month}/${year.slice(2)}`;
-    console.log(`${month}/${year.slice(2)}`);
   }
   formatDate(date: Date): string {
     const year = date.getFullYear();

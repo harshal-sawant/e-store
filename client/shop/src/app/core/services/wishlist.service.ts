@@ -20,6 +20,9 @@ export class WishlistService extends BaseComponent {
   }
 
   private initializeUid() {
+    let userData: any = localStorage.getItem('userData') || '';
+    userData = JSON.parse(userData);
+    this.uid = userData?.uid;
     // Same uid initialization as CartService
   }
 
@@ -46,14 +49,14 @@ export class WishlistService extends BaseComponent {
 
   private updateWishlist() {
     return this.http.put<Product[]>(
-      `http://localhost:5000/${this.uid}/wishlist.json`,
+      `http://localhost:5000/api/v1/users/${this.uid}/wishlist`,
       this.dbWishlist
     );
   }
 
   getWishlist(): Observable<Product[]> {
     return this.http.get<Product[]>(
-      `http://localhost:5000/${this.uid}/wishlist.json`
+      `http://localhost:5000/api/v1/users/${this.uid}/wishlist`
     );
   }
 }

@@ -9,10 +9,10 @@ import { BaseComponent } from 'global/base/base.component';
 import { takeUntil } from 'rxjs';
 
 @Component({
-    selector: 'app-product-card',
-    templateUrl: './product-card.component.html',
-    styleUrls: ['./product-card.component.css'],
-    standalone: false
+  selector: 'app-product-card',
+  templateUrl: './product-card.component.html',
+  styleUrls: ['./product-card.component.scss'],
+  standalone: false,
 })
 export class ProductCardComponent extends BaseComponent implements OnInit {
   wishlist = 'WISHLIST';
@@ -99,7 +99,6 @@ export class ProductCardComponent extends BaseComponent implements OnInit {
   }
   isSignedIn() {
     let user = localStorage.getItem('userData');
-    console.log(user);
     return user;
   }
 }

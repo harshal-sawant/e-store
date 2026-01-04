@@ -8,10 +8,10 @@ import { BaseComponent } from 'global/base/base.component';
 import { takeUntil } from 'rxjs';
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css'],
-    standalone: false
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
+  standalone: false,
 })
 export class AppComponent extends BaseComponent implements OnInit {
   title = 'E-Store';
@@ -48,12 +48,10 @@ export class AppComponent extends BaseComponent implements OnInit {
       }
     });
     const jsonString: any = localStorage.getItem('userData');
-    console.log('Retrieved from localStorage:', jsonString);
 
     if (jsonString) {
       try {
         const parsedData = JSON.parse(jsonString);
-        console.log('Parsed data:', parsedData);
         // Additional logic...
       } catch (error) {
         console.error('Error parsing JSON:', error);
@@ -73,7 +71,6 @@ export class AppComponent extends BaseComponent implements OnInit {
       .getWishlist()
       .pipe(takeUntil(this.destroy$))
       .subscribe((data) => {
-        console.log(data);
         this.store.dispatch(new ProductsActions.initializeWishlistAction(data));
       });
   }

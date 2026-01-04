@@ -55,10 +55,8 @@ export class AuthService {
   expirationTime: any;
   private tokenExpirationTimer: any;
   setLogoutTimer(expirationDuration: number) {
-    console.log('Start');
     this.tokenExpirationTimer = setTimeout(() => {
       localStorage.removeItem('token');
-      console.log('End');
     }, expirationDuration);
   }
   signUp(email: string, password: string) {
