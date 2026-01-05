@@ -1,73 +1,93 @@
-# E-Store
+# YCompany - Retail Inventory Management Software System (RIMSS)
 
-Angular Full Stack ([MEAN Stack](#MEAN-Stack)) application for users to browse and purchase products, manage their shopping cart, and handle orders efficiently. This application features user authentication, product listings, and an admin dashboard for managing inventory.
+This monorepo contains two Angular applications and a Node.js backend:
 
-## Table of Contents
+- **Shop**: Customer-facing e-commerce app
+- **Admin**: Admin dashboard for managing products, categories, and orders
+- **Server**: Node.js/Express backend with MongoDB
 
-- [Features](#features)
-- [Technologies Used](#technologies-used)
-- [Getting Started](#getting-started)
+---
 
-## Features
+## Shop Application
 
-### Customer Side
+- Path: `client/shop/`
+- Features:
+  - Product catalog, search, filter, sort
+  - Cart and wishlist management
+  - Checkout with Stripe payment integration
+  - User profile and authentication
+  - Responsive UI with Angular Material & PrimeNG
+- Start:
+  ```bash
+  cd client/shop
+  npm install
+  ng serve
+  ```
+  App runs at [http://localhost:4200](http://localhost:4200)
 
-- **User Authentication**: Sign up or sign in to your own profile using JWT for secure user sessions.
-- **Product Search**: Users can browse, search, and filter products by categories and view detailed product pages.
-- **Cart and Wishlist Management**: Add or delete products from your cart and wishlist.
-- **Order Submission**: Submit your order (order: selected products from your cart and user information) to the [backend](#Admin-Side-Dashboard).
+## Admin Application
 
-### Admin Side (Dashboard)
+- Path: `client/admin/`
+- Features:
+  - Product CRUD (create, update, delete)
+  - Category management
+  - Order management
+  - Dashboard analytics
+  - Admin authentication
+- Start:
+  ```bash
+  cd client/admin
+  npm install
+  ng serve
+  ```
+  App runs at [http://localhost:4300](http://localhost:4300)
 
-- **Admin Dashboard**: Admin can manage products, orders, and users accounts.
-- **Product Management**: View all products, and create, update, or delete products in the shop.
-- **Order Management**: View all submitted orders along with customer information.
+## Backend Server
 
-## Technologies Used
+- Path: `server/`
+- Features:
+  - RESTful API for products, categories, orders, users, comments
+  - JWT authentication
+  - MongoDB database
+  - File upload for product images
+- Start:
+  ```bash
+  cd server
+  npm install
+  node app.js
+  ```
+  API runs at [http://localhost:5000/api/v1/](http://localhost:5000/api/v1/)
 
-### MEAN Stack
+## Environment Setup
 
-- **[MongoDB](https://www.mongodb.com/)**: NoSQL database for storing product and user data.
-- **[Angular](https://angular.io/)**: Frontend framework for building the user interface.
-- **[Express.js](https://expressjs.com/)**: Web framework for Node.js for handling requests.
-- **[Node.js](https://nodejs.org/)**: JavaScript runtime for server-side development.
+- Create `.env` in `server/` with:
+  ```env
+  MONGO_URI=your_mongodb_connection_string
+  PORT=5000
+  JWT_SECRET=your_jwt_secret
+  JWT_LIFETIME=1d
+  CORS_ORIGIN=http://localhost:4200
+  STRIPE_SECRET_KEY=your_stripe_secret_key
+  ```
 
-### Other tools and technologies used
+## Notes
 
-- **[Mongoose](https://mongoosejs.com/)**: ODM library for MongoDB to model application data.
-- **[JWT (JSON Web Tokens)](https://jwt.io/)**: Used for secure user authentication, ensuring that user sessions are protected.
-- **[Bcrypt.js](https://www.npmjs.com/package/bcrypt)**: Library for hashing passwords to enhance security in user authentication.
-- **[Bootstrap](https://getbootstrap.com/)**: CSS framework for responsive design.
-- **[PrimeNG](https://www.primefaces.org/primeng/)**: A rich UI component library for Angular applications.
-- **[Angular Material](https://material.angular.io/)**: A set of reusable UI components that implement Google's Material Design.
+- Replace Stripe keys in both frontend and backend for payments
+- Shop and Admin apps use separate Angular projects
+- For development, run all three apps in parallel
+- For API endpoints, see `server/routes/`
 
-### Angular Workspaces
+---
 
-This project utilizes an Angular Workspace structure to manage multiple applications within a single codebase. The workspace contains two primary applications:
+## Folder Structure
 
-- **User Application**: The main frontend application for end-users.
-- **Admin Application**: A separate application for administrators, providing features for managing the inventory.
+```
+client/
+  shop/      # Customer app
+  admin/     # Admin dashboard
+server/      # Node.js backend
+```
 
-## Getting Started
+## License
 
-_Prerequisites_
-
-1. Install Angular CLI:
-   ```bash
-   npm install -g @angular/cli
-   ```
-
-_Run_
-
-1. In a new terminal, install the frontend dependencies:
-   ```bash
-   npm i
-   ```
-2. Start the Angular application as Customer:
-   ```bash
-   ng serve shop
-   ```
-3. Start the Angular application as Admin:
-   ```bash
-   ng serve admin
-   ```
+MIT
